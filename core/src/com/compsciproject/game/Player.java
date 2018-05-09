@@ -8,6 +8,8 @@ public class Player
 	private int JUMP_HEIGHT = 10;
 	private int y;
 	private int x;
+	private boolean goRight = false;
+	private boolean goLeft = false;
 	
 	/**
 	 * Constructs a player object at loc(x,y).
@@ -21,17 +23,44 @@ public class Player
 	}
 	
 	/**
-	 * Moves player right MOVE_RIGHT places.
+	 * 
+	 * @return x value of player.
 	 */
-	public void moveRight() {
-		x = x + MOVE_RIGHT;
+	public int getX() {
+		return x;
 	}
 	
 	/**
+	 * 
+	 * @return return y value of player.
+	 */
+	public int getY() {
+		return y;
+	}
+	
+	public void moveRight(boolean goR) {
+		goRight = goR;
+		goRight();
+	}
+	/**
+	 * Moves player right MOVE_RIGHT places.
+	 */
+	public void goRight() {
+		if(goRight) {
+			x = x + MOVE_RIGHT;
+		}
+	}
+	public void moveLeft(boolean goL) {
+		goLeft = goL;
+		goLeft();
+	}
+	/**
 	 * Moves player left MOVE_LEFT places
 	 */
-	public void moveLeft() {
-		x = x - MOVE_LEFT;
+	public void goLeft() {
+		if(goLeft) {
+			x = x - MOVE_LEFT;
+		}
 	}
 	
 	/**
