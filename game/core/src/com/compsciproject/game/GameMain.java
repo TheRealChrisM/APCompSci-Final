@@ -9,13 +9,15 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class GameMain extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture img;
-	Texture bg;
+	Texture[] bg = new Texture[2];
+		//{new Texture("volcano_bg.jpg"), new Texture("badlogic.jpg")};
 	
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
 		img = new Texture("badlogic.jpg");
-		bg = new Texture("volcano_bg.jpg");
+		bg[0] = new Texture("volcano_bg.jpg");
+		bg[1] = new Texture("badlogic.jpg");
 	}
 	
 	@Override
@@ -23,7 +25,7 @@ public class GameMain extends ApplicationAdapter {
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
-		batch.draw(bg, 0, 0);
+		batch.draw(bg[0], 0, 0);
 		batch.draw(img, 0, 0);
 		batch.end();
 	}
