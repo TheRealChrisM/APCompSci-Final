@@ -10,9 +10,14 @@ public class GameMain extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture img;
 	Texture[] bg = new Texture[2];
+	Animation<TextureRegion> charAnimation;
+	Texture walksheet;
+	SpriteBatch spriteBatch;
+	
 	
 	@Override
 	public void create () {
+		walksheet = new Texture
 		batch = new SpriteBatch();
 		bg[0] = new Texture("desert_bg.jpg");
 		bg[1] = new Texture("volcano_bg.jpg");
@@ -24,7 +29,6 @@ public class GameMain extends ApplicationAdapter {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
 		batch.draw(bg[0], 0, 0);
-		//batch.draw(img, 0, 0);
 		batch.end();
 	}
 	
