@@ -10,13 +10,11 @@ public class GameMain extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture img;
 	Texture[] bg = new Texture[2];
-		//{new Texture("volcano_bg.jpg"), new Texture("badlogic.jpg")};
 	
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
-		bg[0] = new Texture("volcano_bg.jpg");
+		bg[0] = new Texture("desert_bg.jpg");
 		bg[1] = new Texture("badlogic.jpg");
 	}
 	
