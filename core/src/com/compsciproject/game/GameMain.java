@@ -58,6 +58,10 @@ public class GameMain extends ApplicationAdapter {
 		p1.goRight();
 		p2.goLeft();
 		p2.goRight();
+		p1.rise();
+		p2.rise();
+		p1.fall();
+		p2.fall();
 		
 		batch.begin();
 		batch.draw(bg[0], 0, 0);

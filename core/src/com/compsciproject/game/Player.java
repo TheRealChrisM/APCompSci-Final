@@ -2,15 +2,19 @@ package com.compsciproject.game;
 
 public class Player 
 {
-	private int MOVE_UP = 5;
-	private int MOVE_LEFT = 5;
-	private int MOVE_RIGHT = 5;
-	private int JUMP_HEIGHT = 10;
+	private final int MOVE_UP = 5;
+	private final int MOVE_LEFT = 5;
+	private final int MOVE_RIGHT = 5;
+	private final int JUMP_HEIGHT = 60;
+	private final int JUMP_SPEED = 6;
+	private final int FALL_SPEED = 3;
 	private int y;
 	private int x;
 	private boolean goRight = false;
 	private boolean goLeft = false;
-	
+	private int maxHeight;
+	private int minHeight;
+	private boolean jumping = false;
 	/**
 	 * Constructs a player object at loc(x,y).
 	 * @param xVal what x value player should be at.
@@ -20,6 +24,7 @@ public class Player
 	{
 		x = xVal;
 		y = yVal;
+		minHeight = y;
 	}
 	
 	/**
@@ -67,13 +72,23 @@ public class Player
 	 * Player jumps up to maxHeight and falls back down to minHeight.
 	 */
 	public void jump() {
-		int maxHeight = y + JUMP_HEIGHT;
-		int minHeight = y;
-		while(y<maxHeight) {
-			y =+ MOVE_UP;
+		maxHeight = y + JUMP_HEIGHT;
+		minHeight = y;
+		jumping = true;
+	}
+	public void rise() {
+		if(jumping) {
+			if(y<maxHeight && y<670) {
+				y = y + JUMP_SPEED;
+			}
+			else{
+				jumping = false;
+			}
 		}
-		while(y>minHeight) {
-			y =- MOVE_UP;
+	}
+	public void fall() {
+		if(y>minHeight) {
+			y = y - FALL_SPEED;
 		}
 	}
 }
