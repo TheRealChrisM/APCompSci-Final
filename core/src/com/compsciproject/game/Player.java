@@ -2,12 +2,12 @@ package com.compsciproject.game;
 
 public class Player 
 {
-	private final int MOVE_UP = 5;
+	//private final int MOVE_UP = 5;
 	private final int MOVE_LEFT = 5;
 	private final int MOVE_RIGHT = 5;
-	private final int JUMP_HEIGHT = 60;
-	private final int JUMP_SPEED = 6;
-	private final int FALL_SPEED = 3;
+	private final int JUMP_HEIGHT = 80;
+	private final int JUMP_SPEED = 8;
+	private final int FALL_SPEED = 4;
 	private int y;
 	private int x;
 	private boolean goRight = false;
@@ -72,9 +72,11 @@ public class Player
 	 * Player jumps up to maxHeight and falls back down to minHeight.
 	 */
 	public void jump() {
-		maxHeight = y + JUMP_HEIGHT;
-		minHeight = y;
-		jumping = true;
+		if(jumping == false && !(y>minHeight)) {
+			maxHeight = y + JUMP_HEIGHT;
+			minHeight = y;
+			jumping = true;
+		}
 	}
 	public void rise() {
 		if(jumping) {

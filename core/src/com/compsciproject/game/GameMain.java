@@ -4,7 +4,6 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
@@ -20,10 +19,14 @@ public class GameMain extends ApplicationAdapter {
 	public static Player p1;
 	public static Player p2;
 	MyInputProcessor inputProcessor = new MyInputProcessor();
-	
-	
+	//TiledMap map;
+	//OrthographicCamera camera;
+    //TiledMapRenderer tiledMapRenderer;
+    
 	@Override
 	public void create () {
+		float w = Gdx.graphics.getWidth();
+        float h = Gdx.graphics.getHeight();
 		walkSheet = new Texture("default_char.png");
 		TextureRegion[][] tmp = TextureRegion.split(walkSheet, walkSheet.getWidth() / 4, walkSheet.getHeight() / 4); 
 		batch = new SpriteBatch();
@@ -32,7 +35,10 @@ public class GameMain extends ApplicationAdapter {
 		p1 = new Player(50,50);
 		p2 = new Player(300,50);
 		Gdx.input.setInputProcessor(inputProcessor);
-		
+		//camera = new OrthographicCamera();
+	    //camera.setToOrtho(false,w,h);
+	    //camera.update();
+	    //map = new TmxMapLoader().load("New Map.tmx");
 		walkFrames = new TextureRegion[9];
 		walkFrames[0] = tmp[0][3];
 		walkFrames[1] = tmp[1][0];
@@ -46,6 +52,8 @@ public class GameMain extends ApplicationAdapter {
 		
 //		charAnimation = new Animation<TextureRegion>(0.5f, walkFrames);
 		stateTime = 0f;
+		//tiledMapRenderer = new OrthogonalTiledMapRenderer(map);
+        //Gdx.input.setInputProcessor(this);
 	}
 	
 	@Override
@@ -64,7 +72,10 @@ public class GameMain extends ApplicationAdapter {
 		p2.fall();
 		
 		batch.begin();
-		batch.draw(bg[0], 0, 0);
+		//camera.update();
+        //tiledMapRenderer.setView(camera);
+        //tiledMapRenderer.render();
+		//batch.draw(bg[0], 0, 0);
 		batch.draw(walkFrames[0], p1.getX(), p1.getY(), 50, 50);
 		batch.draw(walkFrames[0], p2.getX(), p2.getY(), 50, 50);
 		batch.end();
