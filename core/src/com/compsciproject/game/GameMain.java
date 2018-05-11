@@ -37,13 +37,13 @@ public class GameMain extends ApplicationAdapter {
 		batch = new SpriteBatch();
 		bg[0] = new Texture("desert_bg.jpg");
 		bg[1] = new Texture("volcano_bg.jpg");
-		p1 = new Player(50,50);
-		p2 = new Player(300,50);
+		p1 = new Player(50,165);
+		p2 = new Player(1175,165);
 		Gdx.input.setInputProcessor(inputProcessor);
 		camera = new OrthographicCamera();
 	    camera.setToOrtho(false,w,h);
 	    camera.update();
-	    map = new TmxMapLoader().load("New map2.tmx");
+	    map = new TmxMapLoader().load("Factory.tmx");
 		walkFrames = new TextureRegion[9];
 		walkFrames[0] = tmp[0][3];
 		walkFrames[1] = tmp[1][0];
@@ -75,16 +75,12 @@ public class GameMain extends ApplicationAdapter {
 		p2.rise();
 		p1.fall();
 		p2.fall();
-		
+		tiledMapRenderer.setView(camera);
+        tiledMapRenderer.render();
 		batch.begin();
 		batch.draw(walkFrames[0], p1.getX(), p1.getY(), 50, 50);
 		batch.draw(walkFrames[0], p2.getX(), p2.getY(), 50, 50);
 		camera.update();
-        tiledMapRenderer.setView(camera);
-        tiledMapRenderer.render();
-		batch.draw(bg[0], 0, 0);
-		batch.draw(walkFrames[0], p1.getX(), p1.getY(), 50, 50);
-		batch.draw(walkFrames[0], p2.getX(), p2.getY(), 50, 50);
 		batch.end();
 	}
 	
