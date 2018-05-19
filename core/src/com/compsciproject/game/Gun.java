@@ -1,13 +1,13 @@
 package com.compsciproject.game;
 
-public class Gun 
+public abstract class Gun 
 {
-	protected String name;
+	private String name;
 	/*protected boolean automatic;
 	protected boolean semiAutomatic;
 	protected boolean boltAction;*/
-	protected int ammo;
-	protected int accuracy;
+	private int ammo;
+	private int accuracy;
 	
 	public Gun(String name, boolean automatic, int ammo, int accuracy /*boolean semiAutomatic, boolean boltAction,*/)
 	{
@@ -19,25 +19,8 @@ public class Gun
 		this.accuracy = accuracy;
 	}
 	
-	/*protected int fireRate()
-	{
-		int fireRate = 0;
-		if (automatic)
-		{
-			fireRate = 1;
-		}
-		else if (semiAutomatic)
-		{
-			fireRate = 1;
-		}
-		else if (boltAction)
-		{
-			fireRate = 100;
-		}
-		return fireRate;
-	}*/
 	
-	protected void bulletLost()
+	public void bulletLost()
 	{
 		ammo--;
 	}

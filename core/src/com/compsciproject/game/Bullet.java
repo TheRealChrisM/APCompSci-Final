@@ -1,9 +1,9 @@
 package com.compsciproject.game;
 
-public class Bullet 
+public abstract class Bullet 
 {
-	protected int damage;
-	protected int speed;
+	private int damage;
+	private int speed;
 	/*protected boolean heavy;
 	protected boolean medium;
 	protected boolean light;*/
