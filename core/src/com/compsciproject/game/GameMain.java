@@ -15,7 +15,6 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 public class GameMain extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture img;
-	Texture[] bg = new Texture[2];
 	//Animation<TextureRegion> charAnimation;
 	TextureRegion[] walkFrames;
 	Texture walkSheet;
@@ -35,8 +34,6 @@ public class GameMain extends ApplicationAdapter {
 		walkSheet = new Texture("default_char.png");
 		TextureRegion[][] tmp = TextureRegion.split(walkSheet, walkSheet.getWidth() / 4, walkSheet.getHeight() / 4); 
 		batch = new SpriteBatch();
-		bg[0] = new Texture("desert_bg.jpg");
-		bg[1] = new Texture("volcano_bg.jpg");
 		p1 = new Player(50,165);
 		p2 = new Player(1175,165);
 		Gdx.input.setInputProcessor(inputProcessor);
