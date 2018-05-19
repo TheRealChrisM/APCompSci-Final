@@ -80,8 +80,7 @@ public class Player
 	public void goRight() {
 		int xVarR = 80-(((((getX()+25))+MOVE_RIGHT)) / 16);
 		int yVarR = 45-(((getY()+25)) /16 );
-		System.out.println(xVarR + "" + yVarR);
-		if(goRight && (collisionLayer.getCell(xVarR, yVarR).getTile().getProperties().containsKey("blocked"))) {
+		if(goRight && !((collisionLayer.getCell(xVarR, yVarR).getTile().getProperties().containsKey("blocked")))) {
 			x = x + MOVE_RIGHT;
 		}
 	}
@@ -95,8 +94,7 @@ public class Player
 	public void goLeft() {
 		int xVarL = 80-(((((getX()+25))-MOVE_LEFT)) / 16);
 		int yVarL = 45-(((getY())+25) /16 );
-		System.out.println(xVarL + "" + yVarL);
-		if(goLeft && collisionLayer.getCell(xVarL, yVarL).getTile().getProperties().containsKey("blocked")) {
+		if(goLeft && !(collisionLayer.getCell(xVarL, yVarL).getTile().getProperties().containsKey("blocked"))) {
 			x = x - MOVE_LEFT;
 		}
 	}
