@@ -71,30 +71,35 @@ public class Player
 	}
 	
 	public void moveRight(boolean goR) {
-		goRight = collisionLayer.getCell((int)(((getX()+MOVE_RIGHT))/ 16 ), (int)((((getY()+50)/2)/16))).getTile().getProperties().containsKey("blocked");
+		goRight = goR;
 		goRight();
 	}
 	/**
 	 * Moves player right MOVE_RIGHT places.
 	 */
 	public void goRight() {
-		if(!goRight) {
+		int xVarR = 80-(((((getX()+25))+MOVE_RIGHT)) / 16);
+		int yVarR = 45-(((getY()+25)) /16 );
+		System.out.println(xVarR + "" + yVarR);
+		if(goRight && (collisionLayer.getCell(xVarR, yVarR).getTile().getProperties().containsKey("blocked"))) {
 			x = x + MOVE_RIGHT;
 		}
 	}
 	public void moveLeft(boolean goL) {
-		goLeft = collisionLayer.getCell((int)((getX()-5)/ 16 ), (int)((((getY()+50)/2)/16))).getTile().getProperties().containsKey("blocked");
+		goLeft = goL;
 		goLeft();
 	}
 	/**
 	 * Moves player left MOVE_LEFT places
 	 */
 	public void goLeft() {
-		if(!goLeft) {
+		int xVarL = 80-(((((getX()+25))-MOVE_LEFT)) / 16);
+		int yVarL = 45-(((getY())+25) /16 );
+		System.out.println(xVarL + "" + yVarL);
+		if(goLeft && collisionLayer.getCell(xVarL, yVarL).getTile().getProperties().containsKey("blocked")) {
 			x = x - MOVE_LEFT;
 		}
 	}
-	
 	/**
 	 * Player jumps up to maxHeight and falls back down to minHeight.
 	 */
