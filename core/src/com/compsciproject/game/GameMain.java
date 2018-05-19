@@ -30,7 +30,6 @@ public class GameMain extends ApplicationAdapter {
 	TiledMap map;
 	OrthographicCamera camera;
     TiledMapRenderer tiledMapRenderer;
-    TiledMapTileLayer collisionLayer;
     
 	@Override
 	public void create () {
@@ -41,14 +40,13 @@ public class GameMain extends ApplicationAdapter {
 		batch = new SpriteBatch();
 		Gun gun1 = new Pistol();
 		Gun gun2 = new Pistol();
-		p1 = new Player(50,165, gun1);
-		p2 = new Player(1175,165, gun2);
 		Gdx.input.setInputProcessor(inputProcessor);
 		camera = new OrthographicCamera();
 	    camera.setToOrtho(false,w,h);
 	    camera.update();
-	    map = new TmxMapLoader().load("Factory.tmx"); 
-	    collisionLayer = (TiledMapTileLayer)map.getLayers().get(1);
+	    map = new TmxMapLoader().load("Factory.tmx");
+	    p1 = new Player(50,165, gun1, (TiledMapTileLayer)map.getLayers().get("Tile Layer 2"));
+		p2 = new Player(1175,165, gun2, (TiledMapTileLayer)map.getLayers().get("Tile Layer 2"));
 		walkFrames = new TextureRegion[9];
 		walkFrames[0] = tmp[0][3];
 		walkFrames[1] = tmp[1][0];
@@ -107,23 +105,18 @@ public class GameMain extends ApplicationAdapter {
 		
 	}
 	
-	public void move(int x) {
-		boolean collision;
+	public static void move(int x) {
 		switch(x) {
-			case(1): collision = collisionLayer.getCell((int)((p1.getX()+5)/ 16 ), (int)((((p1.getY()+50)/2)/16))).getTile().getProperties().containsKey("blocked");
-				p1.moveRight(!collision);
+			case(1): p1.moveRight(true);
 				break;
-			case(2): collision = collisionLayer.getCell((int)((p1.getX()-5)/ 16 ), (int)((((p1.getY()+50)/2)/16))).getTile().getProperties().containsKey("blocked");
-				p1.moveLeft(!collision);
+			case(2): p1.moveLeft(true);
 				break;
 			case(3): 
 				p1.jump();
 				break;
-			case(4): collision = collisionLayer.getCell((int)((p2.getX()+5)/ 16 ), (int)((((p2.getY()+50)/2)/16))).getTile().getProperties().containsKey("blocked");
-				p2.moveRight(!collision);
+			case(4): p2.moveRight(true);
 				break;
-			case(5): collision = collisionLayer.getCell((int)((p2.getX()-5)/ 16 ), (int)((((p2.getY()+50)/2)/16))).getTile().getProperties().containsKey("blocked");
-				p2.moveLeft(!collision);
+			case(5): p2.moveLeft(true);
 				break;
 			case(6):
 				p2.jump();

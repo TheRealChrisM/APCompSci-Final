@@ -1,5 +1,7 @@
 package com.compsciproject.game;
 
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+
 public class Player 
 {
 	//private final int MOVE_UP = 5;
@@ -16,17 +18,19 @@ public class Player
 	private int minHeight;
 	private boolean jumping = false;
 	private Gun playerGun;
+	private TiledMapTileLayer collisionLayer;
 	/**
 	 * Constructs a player object at loc(x,y).
 	 * @param xVal what x value player should be at.
 	 * @param yVal what y value player should be at.
 	 */
-	public Player(int xVal, int yVal, Gun gunIn)
+	public Player(int xVal, int yVal, Gun gunIn, TiledMapTileLayer collisionLayerIn)
 	{
 		x = xVal;
 		y = yVal;
 		minHeight = y;
 		playerGun = gunIn;
+		collisionLayer = collisionLayerIn;
 	}
 	
 	public Bullet fire() {
@@ -67,26 +71,26 @@ public class Player
 	}
 	
 	public void moveRight(boolean goR) {
-		goRight = goR;
+		goRight = collisionLayer.getCell((int)(((getX()+MOVE_RIGHT))/ 16 ), (int)((((getY()+50)/2)/16))).getTile().getProperties().containsKey("blocked");
 		goRight();
 	}
 	/**
 	 * Moves player right MOVE_RIGHT places.
 	 */
 	public void goRight() {
-		if(goRight) {
+		if(!goRight) {
 			x = x + MOVE_RIGHT;
 		}
 	}
 	public void moveLeft(boolean goL) {
-		goLeft = goL;
+		goLeft = collisionLayer.getCell((int)((getX()-5)/ 16 ), (int)((((getY()+50)/2)/16))).getTile().getProperties().containsKey("blocked");
 		goLeft();
 	}
 	/**
 	 * Moves player left MOVE_LEFT places
 	 */
 	public void goLeft() {
-		if(goLeft) {
+		if(!goLeft) {
 			x = x - MOVE_LEFT;
 		}
 	}
