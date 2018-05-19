@@ -15,18 +15,41 @@ public class Player
 	private int maxHeight;
 	private int minHeight;
 	private boolean jumping = false;
+	private Gun playerGun;
 	/**
 	 * Constructs a player object at loc(x,y).
 	 * @param xVal what x value player should be at.
 	 * @param yVal what y value player should be at.
 	 */
-	public Player(int xVal, int yVal)
+	public Player(int xVal, int yVal, Gun gunIn)
 	{
 		x = xVal;
 		y = yVal;
 		minHeight = y;
+		playerGun = gunIn;
 	}
 	
+	public Bullet fire() {
+		if(playerGun.getCoolDown() == 0) {
+			Bullet bullet = new Bullet(playerGun.getDmg(), x+1, y+1, 1);
+			return bullet;
+		}
+		return null;
+	}
+	
+	public boolean ableToShoot() {
+		if(playerGun.getCoolDown()==0) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public void coolDown() {
+		playerGun.coolDownWep();
+		
+	}
 	/**
 	 * 
 	 * @return x value of player.

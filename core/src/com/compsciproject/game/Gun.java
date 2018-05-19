@@ -5,12 +5,18 @@ public abstract class Gun
 	private String name;
 	private int fireRate;
 	private int ammo;
+	private int coolDown = 0;
+	private int dmg = 5;
 	
 	public Gun(String name, int fireRate, int ammo)
 	{
 		this.name = name;
 		this.fireRate = fireRate;
 		this.ammo = ammo;
+	}
+	
+	public int getDmg() {	
+		return dmg;
 	}
 	
 	public void bulletLost()
@@ -21,6 +27,16 @@ public abstract class Gun
 	public int getFireRate()
 	{
 		return fireRate;
+	}
+	
+	public int getCoolDown() {
+		
+		return coolDown;
+	}
+	public void coolDownWep() {
+		if(coolDown > 0) {
+			coolDown--;
+		}
 	}
 	
 	public String getWeaponName()

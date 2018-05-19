@@ -1,27 +1,19 @@
 package com.compsciproject.game;
 
-public abstract class Bullet 
+public class Bullet 
 {
 	private int damage;
-	private int speed;
 	private int xPos;
 	private int yPos;
-	private int weight;
 	private int length;
+	private int speed = 5;
 	
-	public Bullet(int damage, int speed, int x, int y, int weight, int length)
+	public Bullet(int damage, int x, int y, int length)
 	{
 		this.damage = damage;
-		this.speed = speed;
 		xPos = x;
 		yPos = y;
-		this.weight = weight;
 		this.length = length;
-	}
-	
-	public int getWeight()
-	{
-		return weight;
 	}
 	
 	public int getLength()
@@ -35,11 +27,6 @@ public abstract class Bullet
 	
 	public int getXPos() {
 		return xPos;
-	}
-	
-	public int getSpeed()
-	{
-		return speed;
 	}
 	
 	public int getDamage()
