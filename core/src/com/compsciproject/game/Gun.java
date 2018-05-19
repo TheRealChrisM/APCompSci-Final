@@ -3,31 +3,24 @@ package com.compsciproject.game;
 public abstract class Gun 
 {
 	private String name;
-	/*protected boolean automatic;
-	protected boolean semiAutomatic;
-	protected boolean boltAction;*/
+	private int fireRate;
 	private int ammo;
-	private int accuracy;
 	
-	public Gun(String name, boolean automatic, int ammo, int accuracy /*boolean semiAutomatic, boolean boltAction,*/)
+	public Gun(String name, int fireRate, int ammo)
 	{
 		this.name = name;
-		/*this.automatic = automatic;
-		this.semiAutomatic = semiAutomatic;
-		this.boltAction = boltAction;*/
+		this.fireRate = fireRate;
 		this.ammo = ammo;
-		this.accuracy = accuracy;
 	}
-	
 	
 	public void bulletLost()
 	{
 		ammo--;
 	}
 	
-	public int getAccuracy()
+	public int getFireRate()
 	{
-		return accuracy;
+		return fireRate;
 	}
 	
 	public String getWeaponName()

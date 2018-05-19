@@ -4,21 +4,29 @@ public abstract class Bullet
 {
 	private int damage;
 	private int speed;
-	/*protected boolean heavy;
-	protected boolean medium;
-	protected boolean light;*/
 	private int xPos;
 	private int yPos;
+	private int weight;
+	private int length;
 	
-	public Bullet(int damage, int speed, int x, int y /*boolean heavy, boolean medium, boolean light*/)
+	public Bullet(int damage, int speed, int x, int y, int weight, int length)
 	{
 		this.damage = damage;
 		this.speed = speed;
 		xPos = x;
 		yPos = y;
-		/*this.heavy = heavy;
-		this.light = light;
-		this.medium = medium;*/
+		this.weight = weight;
+		this.length = length;
+	}
+	
+	public int getWeight()
+	{
+		return weight;
+	}
+	
+	public int getLength()
+	{
+		return length;
 	}
 	
 	public int getYPos() {

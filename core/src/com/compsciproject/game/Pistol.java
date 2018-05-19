@@ -1,12 +1,11 @@
 package com.compsciproject.game;
 
-public class Pistol extends Gun {
-
+public class Pistol extends Gun 
+{
+	private static String name = "M1911";
 	
-	public Pistol(String name, int ammo, int accuracy)
+	public Pistol()
 	{
-		super(name, false, ammo, accuracy);
-
-
+		super(name, 1, 8);
 	}
 }
