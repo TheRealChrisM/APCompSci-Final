@@ -16,7 +16,6 @@ public class Player
 	private boolean goRight = false;
 	private boolean goLeft = false;
 	private int maxHeight;
-	private int minHeight;
 	private boolean jumping = false;
 	private Gun playerGun;
 	private TiledMapTileLayer collisionLayer;
@@ -30,7 +29,6 @@ public class Player
 	{
 		x = xVal;
 		y = yVal;
-		minHeight = y;
 		playerGun = gunIn;
 		collisionLayer = collisionLayerIn;
 	}
@@ -80,8 +78,8 @@ public class Player
 	 * Moves player right MOVE_RIGHT places.
 	 */
 	public void goRight() {
-		int xVarR = 80-(((((getX()+25))+MOVE_RIGHT)) / 16);
-		int yVarR = 45-(((getY()+25)) /16 );
+		int xVarR = (((((getX()+50))+MOVE_RIGHT)) / 16);
+		int yVarR = (((getY()+25)) /16 );
 		if(goRight && !((collisionLayer.getCell(xVarR, yVarR).getTile().getProperties().containsKey("blocked")))) {
 			x = x + MOVE_RIGHT;
 		}
@@ -94,8 +92,8 @@ public class Player
 	 * Moves player left MOVE_LEFT places
 	 */
 	public void goLeft() {
-		int xVarL = 80-(((((getX()+25))-MOVE_LEFT)) / 16);
-		int yVarL = 45-(((getY())+25) /16 );
+		int xVarL = (((((getX()))-MOVE_LEFT)) / 16);
+		int yVarL = (((getY())+25) /16 );
 		if(goLeft && !(collisionLayer.getCell(xVarL, yVarL).getTile().getProperties().containsKey("blocked"))) {
 			x = x - MOVE_LEFT;
 		}
