@@ -11,6 +11,8 @@ public class Player
 	private final int JUMP_SPEED = 8;
 	private final int FALL_SPEED = 4;
 	private int jumps = 0;
+	private int xStart;
+	private int yStart;
 	private int y;
 	private int x;
 	private boolean goRight = false;
@@ -30,9 +32,16 @@ public class Player
 	public Player(int xVal, int yVal, Gun gunIn, TiledMapTileLayer collisionLayerIn)
 	{
 		x = xVal;
+		xStart = xVal;
 		y = yVal;
+		yStart = yVal;
 		playerGun = gunIn;
 		collisionLayer = collisionLayerIn;
+	}
+	
+	public void respawn() {
+		x = xStart;
+		y = yStart;
 	}
 	
 	public Bullet fire() {

@@ -14,7 +14,7 @@ public class Bullet
 	{
 		this.damage = damage;
 		if(facingRight) {
-			xPos = x + 40;
+			xPos = x + 50;
 			yPos = y;
 		}
 		else {

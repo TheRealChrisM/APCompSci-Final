@@ -125,6 +125,7 @@ public class GameMain extends ApplicationAdapter {
 			if(noBulletsRemoved && (p1.getX()<bullets.get(m).getXPos()) && ((p1.getX()+50)>bullets.get(m).getXPos()) && (p1.getY()<bullets.get(m).getYPos()) && ((p1.getY()+50)>bullets.get(m).getYPos())){
 				System.out.println("COLLISION WITH P1");
 				p2Wins++;
+				p1.respawn();
 				noBulletsRemoved = false;
 				bullets.remove(m);
 				m--;
@@ -132,6 +133,7 @@ public class GameMain extends ApplicationAdapter {
 			if(noBulletsRemoved && (p2.getX()<bullets.get(m).getXPos()) && ((p2.getX()+50)>bullets.get(m).getXPos()) && (p2.getY()<bullets.get(m).getYPos()) && ((p2.getY()+50)>bullets.get(m).getYPos())){
 				System.out.println("COLLISION WITH P2");
 				p1Wins++;
+				p2.respawn();
 				noBulletsRemoved = false;
 				bullets.remove(m);
 				m--;
