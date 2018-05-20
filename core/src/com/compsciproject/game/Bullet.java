@@ -1,5 +1,7 @@
 package com.compsciproject.game;
 
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+
 public class Bullet 
 {
 	private int damage;
@@ -9,9 +11,11 @@ public class Bullet
 	private int speed = 10;
 	//true for right, false for left
 	private boolean direction;
+	private TiledMapTileLayer collisionLayer;
 	
-	public Bullet(int damage, int x, int y, int length, boolean facingRight)
+	public Bullet(int damage, int x, int y, int length, boolean facingRight, TiledMapTileLayer collisionLayerIn)
 	{
+		collisionLayer = collisionLayerIn;
 		this.damage = damage;
 		if(facingRight) {
 			xPos = x + 50;
@@ -50,5 +54,15 @@ public class Bullet
 		else {
 			xPos = xPos - speed;
 		}
+	}
+	
+	public boolean checkCollision() {
+		int xVarB = ( (xPos + 15)  / 16);
+		int yVarB = ( (yPos + 15) / 16 );
+		if(collisionLayer.getCell(xVarB, yVarB).getTile().getProperties().containsKey("blocked")) {
+			return true;
+		}
+		
+		return false;
 	}
 }

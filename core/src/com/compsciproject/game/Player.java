@@ -46,7 +46,7 @@ public class Player
 	
 	public Bullet fire() {
 		if(playerGun.getCoolDown() == 0) {
-			Bullet bulletOut = new Bullet(playerGun.getDmg(), x+1, y+10, 1, curDirection);
+			Bullet bulletOut = new Bullet(playerGun.getDmg(), x+1, y+10, 1, curDirection, collisionLayer);
 			return bulletOut;
 		}
 		return null;

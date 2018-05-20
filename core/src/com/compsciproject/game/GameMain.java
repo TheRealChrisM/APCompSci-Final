@@ -36,6 +36,7 @@ public class GameMain extends ApplicationAdapter {
     Texture bulletImg;
     BitmapFont font;
     private String winString;
+    
 	@Override
 	public void create () {
 		font = new BitmapFont(Gdx.files.internal("font.fnt"));
@@ -122,8 +123,12 @@ public class GameMain extends ApplicationAdapter {
 		for(int m = 0; m<bullets.size(); m++) {
 			boolean noBulletsRemoved = true;
 			bullets.get(m).move();
+			if(bullets.get(m).checkCollision()){
+				noBulletsRemoved = false;
+				bullets.remove(m);
+				m--;
+			}
 			if(noBulletsRemoved && (p1.getX()<bullets.get(m).getXPos()) && ((p1.getX()+50)>bullets.get(m).getXPos()) && (p1.getY()<bullets.get(m).getYPos()) && ((p1.getY()+50)>bullets.get(m).getYPos())){
-				System.out.println("COLLISION WITH P1");
 				p2Wins++;
 				p1.respawn();
 				noBulletsRemoved = false;
@@ -131,7 +136,6 @@ public class GameMain extends ApplicationAdapter {
 				m--;
 			}
 			if(noBulletsRemoved && (p2.getX()<bullets.get(m).getXPos()) && ((p2.getX()+50)>bullets.get(m).getXPos()) && (p2.getY()<bullets.get(m).getYPos()) && ((p2.getY()+50)>bullets.get(m).getYPos())){
-				System.out.println("COLLISION WITH P2");
 				p1Wins++;
 				p2.respawn();
 				noBulletsRemoved = false;
