@@ -10,6 +10,7 @@ public class Player
 	private final int JUMP_HEIGHT = 80;
 	private final int JUMP_SPEED = 8;
 	private final int FALL_SPEED = 4;
+	private int jumps = 0;
 	private int y;
 	private int x;
 	private boolean goRight = false;
@@ -19,6 +20,7 @@ public class Player
 	private boolean jumping = false;
 	private Gun playerGun;
 	private TiledMapTileLayer collisionLayer;
+
 	/**
 	 * Constructs a player object at loc(x,y).
 	 * @param xVal what x value player should be at.
@@ -102,25 +104,38 @@ public class Player
 	 * Player jumps up to maxHeight and falls back down to minHeight.
 	 */
 	public void jump() {
-		if(jumping == false && !(y>minHeight)) {
+		if((jumps < 2)) {
 			maxHeight = y + JUMP_HEIGHT;
-			minHeight = y;
+			jumps++;
 			jumping = true;
 		}
 	}
 	public void rise() {
+		int xVarR = ((getX()+25) / 16);
+		int yVarR = ((getY()+FALL_SPEED+50) /16);
 		if(jumping) {
 			if(y<maxHeight && y<670) {
-				y = y + JUMP_SPEED;
+				if(!(collisionLayer.getCell(xVarR, yVarR).getTile().getProperties().containsKey("blocked"))) {
+					y = y + JUMP_SPEED;
+				}
+				else {
+					jumping = false;
+					jumps = 0;
+				}
 			}
 			else{
 				jumping = false;
+				jumps = 0;
 			}
 		}
 	}
 	public void fall() {
-		if(y>minHeight) {
+		int xVarF = ((getX()+25) / 16);
+		int yVarF = ((getY()-FALL_SPEED) /16);
+		
+		if(!(collisionLayer.getCell(xVarF, yVarF).getTile().getProperties().containsKey("blocked"))){
 			y = y - FALL_SPEED;
 		}
+		
 	}
 }

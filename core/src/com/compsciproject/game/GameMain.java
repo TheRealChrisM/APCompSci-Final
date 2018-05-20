@@ -45,8 +45,8 @@ public class GameMain extends ApplicationAdapter {
 	    camera.setToOrtho(false,w,h);
 	    camera.update();
 	    map = new TmxMapLoader().load("Factory.tmx");
-	    p1 = new Player(50,165, gun1, (TiledMapTileLayer)map.getLayers().get("Tile Layer 2"));
-		p2 = new Player(1175,165, gun2, (TiledMapTileLayer)map.getLayers().get("Tile Layer 2"));
+	    p1 = new Player(50,180, gun1, (TiledMapTileLayer)map.getLayers().get("Tile Layer 2"));
+		p2 = new Player(1175,180, gun2, (TiledMapTileLayer)map.getLayers().get("Tile Layer 2"));
 		walkFrames = new TextureRegion[9];
 		walkFrames[0] = tmp[0][3];
 		walkFrames[1] = tmp[1][0];
