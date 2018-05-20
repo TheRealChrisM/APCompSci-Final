@@ -19,6 +19,8 @@ public class Player
 	private boolean jumping = false;
 	private Gun playerGun;
 	private TiledMapTileLayer collisionLayer;
+	//true for Right, false for left.
+	private boolean curDirection = true;
 
 	/**
 	 * Constructs a player object at loc(x,y).
@@ -35,8 +37,8 @@ public class Player
 	
 	public Bullet fire() {
 		if(playerGun.getCoolDown() == 0) {
-			Bullet bullet = new Bullet(playerGun.getDmg(), x+1, y+1, 1);
-			return bullet;
+			Bullet bulletOut = new Bullet(playerGun.getDmg(), x+1, y+10, 1, curDirection);
+			return bulletOut;
 		}
 		return null;
 	}
@@ -71,6 +73,7 @@ public class Player
 	}
 	
 	public void moveRight(boolean goR) {
+		curDirection = true;
 		goRight = goR;
 		goRight();
 	}
@@ -85,6 +88,7 @@ public class Player
 		}
 	}
 	public void moveLeft(boolean goL) {
+		curDirection = false;
 		goLeft = goL;
 		goLeft();
 	}

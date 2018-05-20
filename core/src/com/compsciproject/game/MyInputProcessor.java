@@ -25,7 +25,14 @@ public class MyInputProcessor implements InputProcessor {
 		//UP
 		case(19): GameMain.move(6);
 			break;
+		//Q
+		case(45): GameMain.move(7);
+			break;
+		//SLASH
+		case(76): GameMain.move(8);
+			break;
 		}
+		
 		return false;
 	}
 

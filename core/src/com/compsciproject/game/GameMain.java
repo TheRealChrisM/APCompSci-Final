@@ -30,7 +30,7 @@ public class GameMain extends ApplicationAdapter {
 	TiledMap map;
 	OrthographicCamera camera;
     TiledMapRenderer tiledMapRenderer;
-    
+    Texture bulletImg;
 	@Override
 	public void create () {
 		float w = Gdx.graphics.getWidth();
@@ -40,6 +40,7 @@ public class GameMain extends ApplicationAdapter {
 		batch = new SpriteBatch();
 		Gun gun1 = new Pistol();
 		Gun gun2 = new Pistol();
+		bulletImg = new Texture("bullet.png");
 		Gdx.input.setInputProcessor(inputProcessor);
 		camera = new OrthographicCamera();
 	    camera.setToOrtho(false,w,h);
@@ -84,7 +85,15 @@ public class GameMain extends ApplicationAdapter {
 		batch.draw(walkFrames[0], p1.getX(), p1.getY(), 50, 50);
 		batch.draw(walkFrames[0], p2.getX(), p2.getY(), 50, 50);
 		camera.update();
+		
+		for(int u = 0; u<bullets.size();u++) {
+			batch.draw(bulletImg, bullets.get(u).getXPos(), bullets.get(u).getYPos(), 30, 30);
+		}
+		
 		batch.end();
+		
+		checkBullets();
+		
 		p1.coolDown();
 		p2.coolDown();
 	}
@@ -102,7 +111,9 @@ public class GameMain extends ApplicationAdapter {
 	}
 	
 	public static void checkBullets() {
-		
+		for(int m = 0; m<bullets.size(); m++) {
+			bullets.get(m).move();
+		}
 	}
 	
 	public static void move(int x) {
@@ -111,15 +122,17 @@ public class GameMain extends ApplicationAdapter {
 				break;
 			case(2): p1.moveLeft(true);
 				break;
-			case(3): 
-				p1.jump();
+			case(3): p1.jump();
 				break;
 			case(4): p2.moveRight(true);
 				break;
 			case(5): p2.moveLeft(true);
 				break;
-			case(6):
-				p2.jump();
+			case(6): p2.jump();
+				break;
+			case(7): fireBullet(p1);
+				break;
+			case(8): fireBullet(p2);
 				break;
 			case(-1): p1.moveRight(false);
 				break;

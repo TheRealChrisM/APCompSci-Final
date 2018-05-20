@@ -6,14 +6,17 @@ public class Bullet
 	private int xPos;
 	private int yPos;
 	private int length;
-	private int speed = 5;
+	private int speed = 10;
+	//true for right, false for left
+	private boolean direction;
 	
-	public Bullet(int damage, int x, int y, int length)
+	public Bullet(int damage, int x, int y, int length, boolean facingRight)
 	{
 		this.damage = damage;
 		xPos = x;
 		yPos = y;
 		this.length = length;
+		direction = facingRight;
 	}
 	
 	public int getLength()
@@ -35,6 +38,11 @@ public class Bullet
 	}
 	
 	public void move() {
-		xPos = xPos + speed;
+		if(direction) {
+			xPos = xPos + speed;
+		}
+		else {
+			xPos = xPos - speed;
+		}
 	}
 }
