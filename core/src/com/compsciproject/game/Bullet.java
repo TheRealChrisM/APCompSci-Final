@@ -13,8 +13,14 @@ public class Bullet
 	public Bullet(int damage, int x, int y, int length, boolean facingRight)
 	{
 		this.damage = damage;
-		xPos = x;
-		yPos = y;
+		if(facingRight) {
+			xPos = x + 40;
+			yPos = y;
+		}
+		else {
+			xPos = x;
+			yPos = y;
+		}
 		this.length = length;
 		direction = facingRight;
 	}

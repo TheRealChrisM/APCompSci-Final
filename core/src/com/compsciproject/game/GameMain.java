@@ -112,7 +112,20 @@ public class GameMain extends ApplicationAdapter {
 	
 	public static void checkBullets() {
 		for(int m = 0; m<bullets.size(); m++) {
+			boolean noBulletsRemoved = true;
 			bullets.get(m).move();
+			if(noBulletsRemoved && (p1.getX()<bullets.get(m).getXPos()) && ((p1.getX()+50)>bullets.get(m).getXPos()) && (p1.getY()<bullets.get(m).getYPos()) && ((p1.getY()+50)>bullets.get(m).getYPos())){
+				System.out.println("COLLISION WITH P1");
+				noBulletsRemoved = false;
+				bullets.remove(m);
+				m--;
+			}
+			if(noBulletsRemoved && (p2.getX()<bullets.get(m).getXPos()) && ((p2.getX()+50)>bullets.get(m).getXPos()) && (p2.getY()<bullets.get(m).getYPos()) && ((p2.getY()+50)>bullets.get(m).getYPos())){
+				System.out.println("COLLISION WITH P2");
+				noBulletsRemoved = false;
+				bullets.remove(m);
+				m--;
+			}
 		}
 	}
 	
