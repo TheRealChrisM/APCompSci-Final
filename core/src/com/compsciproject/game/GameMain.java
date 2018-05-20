@@ -7,6 +7,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -17,6 +18,8 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
 public class GameMain extends ApplicationAdapter {
 	private static ArrayList<Bullet> bullets = new ArrayList<Bullet>();
+	private static int p1Wins = 0;
+	private static int p2Wins = 0;
 	SpriteBatch batch;
 	Texture img;
 	//Animation<TextureRegion> charAnimation;
@@ -31,8 +34,11 @@ public class GameMain extends ApplicationAdapter {
 	OrthographicCamera camera;
     TiledMapRenderer tiledMapRenderer;
     Texture bulletImg;
+    BitmapFont font;
+    private String winString;
 	@Override
 	public void create () {
+		font = new BitmapFont(Gdx.files.internal("font.fnt"));
 		float w = Gdx.graphics.getWidth();
         float h = Gdx.graphics.getHeight();
 		walkSheet = new Texture("default_char.png");
@@ -67,6 +73,7 @@ public class GameMain extends ApplicationAdapter {
 	
 	@Override
 	public void render () {
+		winString = "P1: " + p1Wins + " | P2: " + p2Wins + "";
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		stateTime += Gdx.graphics.getDeltaTime();
@@ -82,6 +89,7 @@ public class GameMain extends ApplicationAdapter {
 		tiledMapRenderer.setView(camera);
         tiledMapRenderer.render();
 		batch.begin();
+		font.draw(batch,  winString, 1100, 50);
 		batch.draw(walkFrames[0], p1.getX(), p1.getY(), 50, 50);
 		batch.draw(walkFrames[0], p2.getX(), p2.getY(), 50, 50);
 		camera.update();
@@ -116,12 +124,14 @@ public class GameMain extends ApplicationAdapter {
 			bullets.get(m).move();
 			if(noBulletsRemoved && (p1.getX()<bullets.get(m).getXPos()) && ((p1.getX()+50)>bullets.get(m).getXPos()) && (p1.getY()<bullets.get(m).getYPos()) && ((p1.getY()+50)>bullets.get(m).getYPos())){
 				System.out.println("COLLISION WITH P1");
+				p2Wins++;
 				noBulletsRemoved = false;
 				bullets.remove(m);
 				m--;
 			}
 			if(noBulletsRemoved && (p2.getX()<bullets.get(m).getXPos()) && ((p2.getX()+50)>bullets.get(m).getXPos()) && (p2.getY()<bullets.get(m).getYPos()) && ((p2.getY()+50)>bullets.get(m).getYPos())){
 				System.out.println("COLLISION WITH P2");
+				p1Wins++;
 				noBulletsRemoved = false;
 				bullets.remove(m);
 				m--;
