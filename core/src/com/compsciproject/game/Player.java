@@ -159,12 +159,12 @@ public class Player
 		{	
 		if(!(collisionLayer.getCell(xVarF, yVarF).getTile().getProperties().containsKey("blocked"))){
 			y = y - FALL_SPEED;
-			
+		
 			
 		}
-		//if(collisionLayer.getCell(getX(), getY() - 1).getTile().getProperties().containsKey("blocked")){
-			//jumps = 0;
-		//}
+		if(collisionLayer.getCell(xVarF, yVarF).getTile().getProperties().containsKey("blocked")){
+			jumps = 0;
+		}
 			
 			
 		}
