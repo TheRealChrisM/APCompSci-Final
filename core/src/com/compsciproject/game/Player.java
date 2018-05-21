@@ -125,7 +125,11 @@ public class Player
 		int xVarR = ((getX()+25) / 16);
 		int yVarR = ((getY()+FALL_SPEED+50) /16);
 		if(jumping) {
-			if(y<maxHeight && y+JUMP_SPEED<670) {
+			
+			if(y+JUMP_SPEED>670) {
+				jumping = false;
+			}
+			else if((y<maxHeight)) {
 				if(!(collisionLayer.getCell(xVarR, yVarR).getTile().getProperties().containsKey("blocked"))) {
 					y = y + JUMP_SPEED;
 				}
@@ -134,10 +138,15 @@ public class Player
 					jumps = 0;
 				}
 			}
+			
 			else{
 				jumping = false;
 				jumps = 0;
 			}
+		
+		}
+		else {
+			jumps = 0;
 		}
 	}
 	public void fall() {
