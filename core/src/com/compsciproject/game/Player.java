@@ -123,38 +123,50 @@ public class Player
 	}
 	public void rise() {
 		int xVarR = ((getX()+25) / 16);
-		int yVarR = ((getY()+FALL_SPEED+50) /16);
+		int yVarR = ((getY()+JUMP_SPEED+50) /16);
 		if(jumping) {
 			
 			if(y+JUMP_SPEED>670) {
-				jumping = false;
+			     jumping = false;
 			}
 			else if((y<maxHeight)) {
+			  
 				if(!(collisionLayer.getCell(xVarR, yVarR).getTile().getProperties().containsKey("blocked"))) {
+					
 					y = y + JUMP_SPEED;
+					
 				}
 				else {
 					jumping = false;
-					jumps = 0;
+					//jumps = 0;
 				}
 			}
 			
 			else{
 				jumping = false;
-				jumps = 0;
+				//jumps = 0;
 			}
 		
 		}
 		else {
-			jumps = 0;
+			//jumps = 0;
 		}
 	}
 	public void fall() {
 		int xVarF = ((getX()+25) / 16);
 		int yVarF = ((getY()-FALL_SPEED) /16);
-		
+		if(!jumping)
+		{	
 		if(!(collisionLayer.getCell(xVarF, yVarF).getTile().getProperties().containsKey("blocked"))){
 			y = y - FALL_SPEED;
+			
+			
+		}
+		//if(collisionLayer.getCell(getX(), getY() - 1).getTile().getProperties().containsKey("blocked")){
+			//jumps = 0;
+		//}
+			
+			
 		}
 		
 	}
