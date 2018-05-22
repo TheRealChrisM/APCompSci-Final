@@ -33,11 +33,23 @@ public abstract class Gun
 		
 		return coolDown;
 	}
-	public void coolDownWep() {
-		if(coolDown > 0) {
-			coolDown--;
-		}
+	
+	public void addCool() {
+		coolDown++;
 	}
+	public void coolDownWep(){
+		if(coolDown > 0) {
+			//try {
+				//wait(1000);
+				//coolDown --;
+			//} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				//e.printStackTrace();
+			coolDown--;
+			}
+			
+		}
+	
 	
 	public String getWeaponName()
 	{

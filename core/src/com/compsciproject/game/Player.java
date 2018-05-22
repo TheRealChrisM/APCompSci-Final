@@ -9,7 +9,7 @@ public class Player
 	private final int MOVE_RIGHT = 5;
 	private final int JUMP_HEIGHT = 80;
 	private final int JUMP_SPEED = 8;
-	private final int FALL_SPEED = 4;
+	private final int FALL_SPEED = 3;
 	private int jumps = 0;
 	private int xStart;
 	private int yStart;
@@ -47,7 +47,9 @@ public class Player
 	public Bullet fire() {
 		if(playerGun.getCoolDown() == 0) {
 			Bullet bulletOut = new Bullet(playerGun.getDmg(), x+1, y+10, 1, curDirection, collisionLayer);
+			playerGun.addCool();
 			return bulletOut;
+			
 		}
 		return null;
 	}
