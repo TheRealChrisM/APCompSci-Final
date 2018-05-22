@@ -5,8 +5,9 @@ public abstract class Gun
 	private String name;
 	private int fireRate;
 	private int ammo;
-	private int coolDown = 0;
+	protected int coolDown = 0;
 	private int dmg = 5;
+	private final int COOLDOWN = 100;
 	
 	public Gun(String name, int fireRate, int ammo)
 	{
@@ -47,6 +48,10 @@ public abstract class Gun
 	public int getAmmo()
 	{
 		return ammo;
+	}
+	
+	public void setCooldown(){
+		coolDown += COOLDOWN;
 	}
 	
 }
