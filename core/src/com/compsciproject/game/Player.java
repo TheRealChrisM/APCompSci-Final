@@ -8,7 +8,7 @@ public class Player
 	private final int MOVE_LEFT = 5;
 	private final int MOVE_RIGHT = 5;
 	private final int JUMP_HEIGHT = 80;
-	private final int JUMP_SPEED = 8;
+	private final int JUMP_SPEED = 6;
 	private final int FALL_SPEED = 4;
 	private int jumps = 0;
 	private int xStart;
