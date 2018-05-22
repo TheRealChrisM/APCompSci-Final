@@ -8,8 +8,13 @@ public class Player
 	private final int MOVE_LEFT = 5;
 	private final int MOVE_RIGHT = 5;
 	private final int JUMP_HEIGHT = 80;
+<<<<<<< HEAD
 	private final int JUMP_SPEED = 8;
 	private final int FALL_SPEED = 3;
+=======
+	private final int JUMP_SPEED = 6;
+	private final int FALL_SPEED = 4;
+>>>>>>> 77b22cb2b7016932d099a8f09df6d2ef2e6905a4
 	private int jumps = 0;
 	private int xStart;
 	private int yStart;
@@ -45,9 +50,13 @@ public class Player
 	}
 	
 	public Bullet fire() {
-		if(playerGun.getCoolDown() == 0) {
+		if(ableToShoot()) {
 			Bullet bulletOut = new Bullet(playerGun.getDmg(), x+1, y+10, 1, curDirection, collisionLayer);
+<<<<<<< HEAD
 			playerGun.addCool();
+=======
+			playerGun.setCooldown();
+>>>>>>> 77b22cb2b7016932d099a8f09df6d2ef2e6905a4
 			return bulletOut;
 			
 		}
@@ -84,7 +93,6 @@ public class Player
 	}
 	
 	public void moveRight(boolean goR) {
-		curDirection = true;
 		goRight = goR;
 		goRight();
 	}
@@ -95,11 +103,11 @@ public class Player
 		int xVarR = (((((getX()+50))+MOVE_RIGHT)) / 16);
 		int yVarR = (((getY()+25)) /16 );
 		if(goRight && !((collisionLayer.getCell(xVarR, yVarR).getTile().getProperties().containsKey("blocked")))) {
+			curDirection = true;
 			x = x + MOVE_RIGHT;
 		}
 	}
 	public void moveLeft(boolean goL) {
-		curDirection = false;
 		goLeft = goL;
 		goLeft();
 	}
@@ -110,6 +118,7 @@ public class Player
 		int xVarL = (((((getX()))-MOVE_LEFT)) / 16);
 		int yVarL = (((getY())+25) /16 );
 		if(goLeft && !(collisionLayer.getCell(xVarL, yVarL).getTile().getProperties().containsKey("blocked"))) {
+			curDirection = false;
 			x = x - MOVE_LEFT;
 		}
 	}
@@ -124,19 +133,20 @@ public class Player
 		}
 	}
 	public void rise() {
-		int xVarR = ((getX()+25) / 16);
-		int yVarR = ((getY()+JUMP_SPEED+50) /16);
+		int xVarRi = ((getX()+25) / 16);
+		int yVarRi = ((getY()+JUMP_SPEED+50) /16);
+		
 		if(jumping) {
 			
-			if(y+JUMP_SPEED>670) {
+			if(y+JUMP_SPEED>669) {
 			     jumping = false;
 			}
 			else if((y<maxHeight)) {
 			  
-				if(!(collisionLayer.getCell(xVarR, yVarR).getTile().getProperties().containsKey("blocked"))) {
-					
+				if(!(collisionLayer.getCell(xVarRi, yVarRi).getTile().getProperties().containsKey("blocked"))) {
+					System.out.println("BEFORE xVar: " + xVarRi + " | yVar: " + yVarRi);
 					y = y + JUMP_SPEED;
-					
+					System.out.println("AFTER xVar: " + xVarRi + " | yVar: " + yVarRi);
 				}
 				else {
 					jumping = false;
@@ -159,16 +169,15 @@ public class Player
 		int yVarF = ((getY()-FALL_SPEED) /16);
 		if(!jumping)
 		{	
-		if(!(collisionLayer.getCell(xVarF, yVarF).getTile().getProperties().containsKey("blocked"))){
-			y = y - FALL_SPEED;
-		
-			
-		}
-		if(collisionLayer.getCell(xVarF, yVarF).getTile().getProperties().containsKey("blocked")){
-			jumps = 0;
-		}
-			
-			
+			if(!(collisionLayer.getCell(xVarF, yVarF).getTile().getProperties().containsKey("blocked"))){
+				System.out.println("BEFORE xVar: " + xVarF + " | yVar: " + yVarF);
+				y = y - FALL_SPEED;
+				System.out.println("AFTER xVar: " + xVarF + " | yVar: " + yVarF);
+				
+			}
+			if(collisionLayer.getCell(xVarF, yVarF).getTile().getProperties().containsKey("blocked")){
+				jumps = 0;
+			}	
 		}
 		
 	}
