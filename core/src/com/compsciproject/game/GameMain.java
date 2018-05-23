@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.TextInputListener;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -39,6 +40,7 @@ public class GameMain extends ApplicationAdapter {
     
 	@Override
 	public void create () {
+		
 		font = new BitmapFont(Gdx.files.internal("font.fnt"));
 		float w = Gdx.graphics.getWidth();
         float h = Gdx.graphics.getHeight();
@@ -53,8 +55,8 @@ public class GameMain extends ApplicationAdapter {
 	    camera.setToOrtho(false,w,h);
 	    camera.update();
 	    map = new TmxMapLoader().load("Factory.tmx");
-	    p1 = new Player(50,250, gun1, (TiledMapTileLayer)map.getLayers().get("Tile Layer 2"));
-		p2 = new Player(1175,250, gun2, (TiledMapTileLayer)map.getLayers().get("Tile Layer 2"));
+	    p1 = new Player(50,180, gun1, (TiledMapTileLayer)map.getLayers().get("Tile Layer 2"));
+		p2 = new Player(1175,180, gun2, (TiledMapTileLayer)map.getLayers().get("Tile Layer 2"));
 		walkFrames = new TextureRegion[9];
 		walkFrames[0] = tmp[0][3];
 		walkFrames[1] = tmp[1][0];
