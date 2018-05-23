@@ -10,6 +10,8 @@ public class Player
 	private final int JUMP_HEIGHT = 80;
 	private final int JUMP_SPEED = 6;
 	private final int FALL_SPEED = 4;
+	@SuppressWarnings("unused")
+	private final int KILL_COUNT = 20;
 	private int jumps = 0;
 	private int xStart;
 	private int yStart;
