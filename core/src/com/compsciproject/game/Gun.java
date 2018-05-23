@@ -40,15 +40,8 @@ public abstract class Gun
 	}
 	public void coolDownWep(){
 		if(coolDown > 0) {
-			//try {
-				//wait(1000);
-				//coolDown --;
-			//} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				//e.printStackTrace();
 			coolDown--;
 			}
-			
 		}
 	
 	
