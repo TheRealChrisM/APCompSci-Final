@@ -22,8 +22,6 @@ public class Player
 	private Gun playerGun;
 	private TiledMapTileLayer collisionLayer;
 	//true for Right, false for left.
-	private boolean curDirection = true;
-
 	/**
 	 * Constructs a player object at loc(x,y).
 	 * @param xVal what x value player should be at.
@@ -93,7 +91,6 @@ public class Player
 		int xVarR = (((((getX()+50))+MOVE_RIGHT)) / 16);
 		int yVarR = (((getY()+25)) /16 );
 		if(goRight && !((collisionLayer.getCell(xVarR, yVarR).getTile().getProperties().containsKey("blocked")))) {
-			curDirection = true;
 			x = x + MOVE_RIGHT;
 		}
 	}
@@ -108,7 +105,6 @@ public class Player
 		int xVarL = (((((getX()))-MOVE_LEFT)) / 16);
 		int yVarL = (((getY())+25) /16 );
 		if(goLeft && !(collisionLayer.getCell(xVarL, yVarL).getTile().getProperties().containsKey("blocked"))) {
-			curDirection = false;
 			x = x - MOVE_LEFT;
 		}
 	}
