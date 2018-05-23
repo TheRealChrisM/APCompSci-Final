@@ -113,9 +113,11 @@ public class GameMain extends ApplicationAdapter {
 		img.dispose();
 	}
 	
-	public static void fireBullet(Player playNo){
+	
+	//fireDirection true = right && false = left
+	public static void fireBullet(Player playNo, boolean fireDirection){
 		if(playNo.ableToShoot()) {
-			bullets.add(playNo.fire());
+			bullets.add(playNo.fire(fireDirection));
 		}
 	}
 	
@@ -159,9 +161,13 @@ public class GameMain extends ApplicationAdapter {
 				break;
 			case(6): p2.jump();
 				break;
-			case(7): fireBullet(p1);
+			case(7): fireBullet(p1, false);
 				break;
-			case(8): fireBullet(p2);
+			case(8): fireBullet(p2, false);
+				break;
+			case(9): fireBullet(p1, true);
+				break;
+			case(10): fireBullet(p2, true);
 				break;
 			case(-1): p1.moveRight(false);
 				break;
