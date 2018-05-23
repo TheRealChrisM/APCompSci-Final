@@ -16,7 +16,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
-public class game implements Screen{
+public class GameScreen implements Screen{
 	
 	private static ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 	private static int p1Wins = 0;

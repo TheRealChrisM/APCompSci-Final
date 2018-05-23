@@ -8,34 +8,34 @@ public class MyInputProcessor implements InputProcessor {
 	public boolean keyDown(int keycode) {
 		switch(keycode) {
 		//D
-		case(32): game.move(1);
+		case(32): GameScreen.move(1);
 			break;
 		//A
-		case(29): game.move(2);
+		case(29): GameScreen.move(2);
 			break;
 		//W
-		case(51): game.move(3);
+		case(51): GameScreen.move(3);
 			break;
 		//L
-		case(40): game.move(4);
+		case(40): GameScreen.move(4);
 			break;
 		//J
-		case(38): game.move(5);
+		case(38): GameScreen.move(5);
 			break;
 		//I
-		case(37): game.move(6);
+		case(37): GameScreen.move(6);
 			break;
 		//Q
-		case(45): game.move(7);
+		case(45): GameScreen.move(7);
 			break;
 		//U
-		case(49): game.move(8);
+		case(49): GameScreen.move(8);
 			break;
 		//E
-		case(33): game.move(9);
+		case(33): GameScreen.move(9);
 			break;
 		//O
-		case(43): game.move(10);
+		case(43): GameScreen.move(10);
 			break;
 		}
 		return false;
@@ -45,16 +45,16 @@ public class MyInputProcessor implements InputProcessor {
 	public boolean keyUp(int keycode) {
 		switch(keycode) {
 		//D
-		case(32): game.move(-1);
+		case(32): GameScreen.move(-1);
 			break;
 		//A
-		case(29): game.move(-2);
+		case(29): GameScreen.move(-2);
 			break;
 		//L
-		case(40): game.move(-4);
+		case(40): GameScreen.move(-4);
 			break;
 		//J
-		case(38): game.move(-5);
+		case(38): GameScreen.move(-5);
 			break;
 		}
 		return false;
