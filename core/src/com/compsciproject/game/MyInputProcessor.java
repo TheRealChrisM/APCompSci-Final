@@ -16,26 +16,26 @@ public class MyInputProcessor implements InputProcessor {
 		//W
 		case(51): GameMain.move(3);
 			break;
-		//RIGHT
-		case(22): GameMain.move(4);
+		//L
+		case(40): GameMain.move(4);
 			break;
-		//LEFT
-		case(21): GameMain.move(5);
+		//J
+		case(38): GameMain.move(5);
 			break;
-		//UP
-		case(19): GameMain.move(6);
+		//I
+		case(37): GameMain.move(6);
 			break;
 		//Q
 		case(45): GameMain.move(7);
 			break;
-		//SLASH
-		case(76): GameMain.move(8);
+		//U
+		case(49): GameMain.move(8);
 			break;
 		//E
 		case(33): GameMain.move(9);
 			break;
-		//ENTER
-		case(66): GameMain.move(10);
+		//O
+		case(43): GameMain.move(10);
 			break;
 		}
 		return false;
@@ -50,11 +50,11 @@ public class MyInputProcessor implements InputProcessor {
 		//A
 		case(29): GameMain.move(-2);
 			break;
-		//RIGHT
-		case(22): GameMain.move(-4);
+		//L
+		case(40): GameMain.move(-4);
 			break;
-		//LEFT
-		case(21): GameMain.move(-5);
+		//J
+		case(38): GameMain.move(-5);
 			break;
 		}
 		return false;
