@@ -118,8 +118,11 @@ public class Player
 			jumping = true;
 		}
 	}
+	
 	public void rise() {
-		int xVarRi = ((getX()+25) / 16);
+		int xVarRi = ((getX()) / 16);
+		int xVarRi1 = ((getX()+40) / 16);
+		int xVarRi2 = ((getX()+10) / 16);
 		int yVarRi = ((getY()+JUMP_SPEED+50) /16);
 		
 		if(jumping) {
@@ -128,39 +131,56 @@ public class Player
 			     jumping = false;
 			}
 			else if((y<maxHeight)) {
-			  
-				if(!(collisionLayer.getCell(xVarRi, yVarRi).getTile().getProperties().containsKey("blocked"))) {
-					System.out.println("BEFORE xVar: " + xVarRi + " | yVar: " + yVarRi);
-					y = y + JUMP_SPEED;
-					System.out.println("AFTER xVar: " + xVarRi + " | yVar: " + yVarRi);
-				}
+				if(!(collisionLayer.getCell(xVarRi, yVarRi).getTile().getProperties().containsKey("blocked")) && !(collisionLayer.getCell(xVarRi1, yVarRi).getTile().getProperties().containsKey("blocked")) && !(collisionLayer.getCell(xVarRi2, yVarRi).getTile().getProperties().containsKey("blocked"))) {
+						System.out.println("BEFORE xVar: " + xVarRi + " | yVar: " + yVarRi);
+						jumping = true;
+						System.out.println("AFTER xVar: " + xVarRi + " | yVar: " + yVarRi);
+					}
+				
 				else {
 					jumping = false;
-					//jumps = 0;
 				}
 			}
-			
 			else{
 				jumping = false;
-				//jumps = 0;
 			}
-		
 		}
-		else {
-			//jumps = 0;
+			if(jumping) {
+				y = y + JUMP_SPEED;
+			}
 		}
-	}
+	
 	public void fall() {
-		int xVarF = ((getX()+25) / 16);
+		int xVarF = ((getX()) / 16);
 		int yVarF = ((getY()-FALL_SPEED) /16);
+		int xVarF1 = ((getX()+40) / 16);
+		int xVarF2 = ((getX()+10) / 16);
+		xVarF2 = xVarF;
+		boolean shouldFall = true;
 		if(!jumping)
 		{	
-			if(!(collisionLayer.getCell(xVarF, yVarF).getTile().getProperties().containsKey("blocked"))){
+			if((collisionLayer.getCell(xVarF, yVarF).getTile().getProperties().containsKey("blocked"))){
 				System.out.println("BEFORE xVar: " + xVarF + " | yVar: " + yVarF);
-				y = y - FALL_SPEED;
+				shouldFall = false;
 				System.out.println("AFTER xVar: " + xVarF + " | yVar: " + yVarF);
 				
 			}
+			else if((collisionLayer.getCell(xVarF2, yVarF).getTile().getProperties().containsKey("blocked"))){
+				System.out.println("BEFORE xVar: " + xVarF + " | yVar: " + yVarF);
+				shouldFall = false;
+				System.out.println("AFTER xVar: " + xVarF + " | yVar: " + yVarF);
+			}
+			else if((collisionLayer.getCell(xVarF1, yVarF).getTile().getProperties().containsKey("blocked"))){
+				System.out.println("BEFORE xVar: " + xVarF + " | yVar: " + yVarF);
+				shouldFall = false;
+				System.out.println("AFTER xVar: " + xVarF + " | yVar: " + yVarF);
+			}
+			
+			if(shouldFall) {
+				y = y - FALL_SPEED;
+			}
+			
+			
 			if(collisionLayer.getCell(xVarF, yVarF).getTile().getProperties().containsKey("blocked")){
 				jumps = 0;
 			}	

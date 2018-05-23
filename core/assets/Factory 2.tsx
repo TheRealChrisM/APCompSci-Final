@@ -441,6 +441,26 @@
    <property name="blocked" value=""/>
   </properties>
  </tile>
+ <tile id="616">
+  <properties>
+   <property name="blocked" value=""/>
+  </properties>
+ </tile>
+ <tile id="617">
+  <properties>
+   <property name="blocked" value=""/>
+  </properties>
+ </tile>
+ <tile id="618">
+  <properties>
+   <property name="blocked" value=""/>
+  </properties>
+ </tile>
+ <tile id="619">
+  <properties>
+   <property name="blocked" value=""/>
+  </properties>
+ </tile>
  <tile id="936">
   <properties>
    <property name="blocked" value=""/>
@@ -521,12 +541,27 @@
    <property name="blocked" value=""/>
   </properties>
  </tile>
+ <tile id="1282">
+  <properties>
+   <property name="blocked" value=""/>
+  </properties>
+ </tile>
  <tile id="1283">
   <properties>
    <property name="blocked" value=""/>
   </properties>
  </tile>
  <tile id="1284">
+  <properties>
+   <property name="blocked" value=""/>
+  </properties>
+ </tile>
+ <tile id="1285">
+  <properties>
+   <property name="blocked" value=""/>
+  </properties>
+ </tile>
+ <tile id="1290">
   <properties>
    <property name="blocked" value=""/>
   </properties>
@@ -541,6 +576,16 @@
    <property name="blocked" value=""/>
   </properties>
  </tile>
+ <tile id="1293">
+  <properties>
+   <property name="blocked" value=""/>
+  </properties>
+ </tile>
+ <tile id="1297">
+  <properties>
+   <property name="blocked" value=""/>
+  </properties>
+ </tile>
  <tile id="1298">
   <properties>
    <property name="blocked" value=""/>
@@ -551,12 +596,27 @@
    <property name="blocked" value=""/>
   </properties>
  </tile>
+ <tile id="1302">
+  <properties>
+   <property name="blocked" value=""/>
+  </properties>
+ </tile>
+ <tile id="1305">
+  <properties>
+   <property name="blocked" value=""/>
+  </properties>
+ </tile>
  <tile id="1306">
   <properties>
    <property name="blocked" value=""/>
   </properties>
  </tile>
  <tile id="1309">
+  <properties>
+   <property name="blocked" value=""/>
+  </properties>
+ </tile>
+ <tile id="1310">
   <properties>
    <property name="blocked" value=""/>
   </properties>
