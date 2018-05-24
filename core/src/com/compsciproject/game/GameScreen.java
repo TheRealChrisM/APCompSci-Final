@@ -100,12 +100,12 @@ public class GameScreen implements Screen{
 		camera.update();
 		
 		if(p1Wins >= 24) {
-			font.draw(batch, p1Win, 500,250);
-			batch.draw(walkFrames[0], 500, 250, 500, 500);
+			font.draw(batch, p1Win, 580,180);
+			batch.draw(walkFrames[0], (640-250), 200, 500, 500);
 					}
 		else if(p2Wins >= 24) {
-			font.draw(batch,p2Win, 500, 250);
-			batch.draw(walkFrames[0], 500, 250, 500, 500);
+			font.draw(batch,p2Win, 580, 180);
+			batch.draw(walkFrames[0], (640-250), 200, 500, 500);
 		}
 		
 		for(int u = 0; u<bullets.size();u++) {
