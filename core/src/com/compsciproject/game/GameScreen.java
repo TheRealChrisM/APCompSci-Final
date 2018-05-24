@@ -49,8 +49,8 @@ public class GameScreen implements Screen{
 		walkSheet = new Texture("default_char.png");
 		TextureRegion[][] tmp = TextureRegion.split(walkSheet, walkSheet.getWidth() / 4, walkSheet.getHeight() / 4); 
 		batch = new SpriteBatch();
-		Gun gun1 = new Pistol();
-		Gun gun2 = new Pistol();
+		Pistol gun1 = new Pistol();
+		Pistol gun2 = new Pistol();
 		bulletImg = new Texture("bullet.png");
 		Gdx.input.setInputProcessor(inputProcessor);
 		camera = new OrthographicCamera();
