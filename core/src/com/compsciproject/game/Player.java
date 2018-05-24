@@ -11,6 +11,7 @@ public class Player
 	private final int JUMP_SPEED = 6;
 	private final int FALL_SPEED = 4;
 	
+	private String name = "";  
 	private int jumps = 0;
 	private int xStart;
 	private int yStart;
@@ -29,14 +30,19 @@ public class Player
 	 * @param xVal what x value player should be at.
 	 * @param yVal what y value player should be at.
 	 */
-	public Player(int xVal, int yVal, Gun gunIn, TiledMapTileLayer collisionLayerIn)
+	public Player(int xVal, int yVal, Gun gunIn, TiledMapTileLayer collisionLayerIn, String nameIn)
 	{
+		name = nameIn;
 		x = xVal;
 		xStart = xVal;
 		y = yVal;
 		yStart = yVal;
 		playerGun = gunIn;
 		collisionLayer = collisionLayerIn;
+	}
+	
+	public String getName() {
+		return name;
 	}
 	
 	public void respawn() {
