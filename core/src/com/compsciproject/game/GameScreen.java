@@ -16,7 +16,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
-public class game implements Screen{
+public class GameScreen implements Screen{
 	
 	private static ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 	public static int p1Wins = 0;
@@ -37,14 +37,11 @@ public class game implements Screen{
     BitmapFont font;
     private String winString;
     private String p1PlayerName = "Andrew";
-    private String p2PlayerName;
+    private String p2PlayerName = "Owen";
     private String p1Win = p1PlayerName + " WINS!";
     private String p2Win = p2PlayerName + " WINS!";
     
-    public game() {
-    	
-    }
-   static game g1 = new game();	@Override
+    
 	public void show() {
 		font = new BitmapFont(Gdx.files.internal("font.fnt"));
 		float w = Gdx.graphics.getWidth();
@@ -102,6 +99,15 @@ public class game implements Screen{
 		batch.draw(walkFrames[0], p2.getX(), p2.getY(), 50, 50);
 		camera.update();
 		
+		if(p1Wins >= 24) {
+			font.draw(batch, p1Win, 500,250);
+			batch.draw(walkFrames[0], 500, 250, 500, 500);
+					}
+		else if(p2Wins >= 24) {
+			font.draw(batch,p2Win, 500, 250);
+			batch.draw(walkFrames[0], 500, 250, 500, 500);
+		}
+		
 		for(int u = 0; u<bullets.size();u++) {
 			batch.draw(bulletImg, bullets.get(u).getXPos(), bullets.get(u).getYPos(), 30, 30);
 		}
@@ -120,20 +126,6 @@ public class game implements Screen{
 		// TODO Auto-generated method stub
 		
 	}
-	
-	public void CheckWinCondition(int p1Winss, int p2Winss) {
-		if(p1Winss >= 24) {
-			font.draw(batch, p1Win, 500,500);
-			batch.draw(walkFrames[0], 500, 500, 250, 250);
-					}
-		else if(p2Winss >= 24) {
-			font.draw(batch,p2Win, 500, 500);
-			batch.draw(walkFrames[0], 500, 500, 250, 250);
-		}
-	}
-	
-	
-	
 
 	@Override
 	public void pause() {
@@ -178,7 +170,6 @@ public class game implements Screen{
 				}
 				if(noBulletsRemoved && (p1.getX()<bullets.get(m).getXPos()) && ((p1.getX()+50)>bullets.get(m).getXPos()) && (p1.getY()<bullets.get(m).getYPos()) && ((p1.getY()+50)>bullets.get(m).getYPos())){
 					p2Wins++;
-					g1.CheckWinCondition(p1Wins, p2Wins);
 					p1.respawn();
 					noBulletsRemoved = false;
 					bullets.remove(m);
@@ -186,7 +177,6 @@ public class game implements Screen{
 				}
 				if(noBulletsRemoved && (p2.getX()<bullets.get(m).getXPos()) && ((p2.getX()+50)>bullets.get(m).getXPos()) && (p2.getY()<bullets.get(m).getYPos()) && ((p2.getY()+50)>bullets.get(m).getYPos())){
 					p1Wins++;
-					g1.CheckWinCondition(p1Wins, p2Wins);
 					p2.respawn();
 					noBulletsRemoved = false;
 					bullets.remove(m);

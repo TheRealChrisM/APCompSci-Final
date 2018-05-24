@@ -1,6 +1,6 @@
 package com.compsciproject.game;
 
-import com.badlogic.gdx.ApplicationAdapter;
+
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -13,8 +13,7 @@ public class GameMain extends Game {
 	@Override
 	public void create () {
 		spriteBatch = new SpriteBatch();
-		this.setScreen(new game());
-        
+		this.setScreen(new GameScreen());
 	}
 	
 	@Override
