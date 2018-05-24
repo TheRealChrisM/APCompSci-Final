@@ -38,8 +38,8 @@ public class GameScreen implements Screen{
     private String winString;
     private String p1PlayerName = "Andrew";
     private String p2PlayerName = "Owen";
-    private String p1Win = p1PlayerName + " WINS!";
-    private String p2Win = p2PlayerName + " WINS!";
+    private String p1Win = p1.getName() + " WINS!";
+    private String p2Win = p2.getName() + " WINS!";
     
     
 	public void show() {
@@ -57,8 +57,8 @@ public class GameScreen implements Screen{
 	    camera.setToOrtho(false,w,h);
 	    camera.update();
 	    map = new TmxMapLoader().load("Factory.tmx");
-	    p1 = new Player(50,180, gun1, (TiledMapTileLayer)map.getLayers().get("Tile Layer 2"));
-		p2 = new Player(1175,180, gun2, (TiledMapTileLayer)map.getLayers().get("Tile Layer 2"));
+	    p1 = new Player(50,180, gun1, (TiledMapTileLayer)map.getLayers().get("Tile Layer 2"), p1PlayerName);
+		p2 = new Player(1175,180, gun2, (TiledMapTileLayer)map.getLayers().get("Tile Layer 2"), p2PlayerName);
 		walkFrames = new TextureRegion[9];
 		walkFrames[0] = tmp[0][3];
 		walkFrames[1] = tmp[1][0];
