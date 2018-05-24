@@ -10,8 +10,7 @@ public class Player
 	private final int JUMP_HEIGHT = 80;
 	private final int JUMP_SPEED = 6;
 	private final int FALL_SPEED = 4;
-	@SuppressWarnings("unused")
-	private final int KILL_COUNT = 20;
+	
 	private int jumps = 0;
 	private int xStart;
 	private int yStart;
@@ -23,6 +22,7 @@ public class Player
 	private boolean jumping = false;
 	private Gun playerGun;
 	private TiledMapTileLayer collisionLayer;
+	
 	//true for Right, false for left.
 	/**
 	 * Constructs a player object at loc(x,y).
@@ -48,6 +48,7 @@ public class Player
 		if(ableToShoot()) {
 			Bullet bulletOut = new Bullet(playerGun.getDmg(), x+1, y+10, 1, fireDirection, collisionLayer);
 			playerGun.setCooldown();
+			
 			return bulletOut;
 		}
 		return null;
@@ -134,9 +135,9 @@ public class Player
 			}
 			else if((y<maxHeight)) {
 				if(!(collisionLayer.getCell(xVarRi, yVarRi).getTile().getProperties().containsKey("blocked")) && !(collisionLayer.getCell(xVarRi1, yVarRi).getTile().getProperties().containsKey("blocked")) && !(collisionLayer.getCell(xVarRi2, yVarRi).getTile().getProperties().containsKey("blocked"))) {
-						System.out.println("BEFORE xVar: " + xVarRi + " | yVar: " + yVarRi);
+						//System.out.println("BEFORE xVar: " + xVarRi + " | yVar: " + yVarRi);
 						jumping = true;
-						System.out.println("AFTER xVar: " + xVarRi + " | yVar: " + yVarRi);
+						//System.out.println("AFTER xVar: " + xVarRi + " | yVar: " + yVarRi);
 					}
 				
 				else {
@@ -162,20 +163,20 @@ public class Player
 		if(!jumping)
 		{	
 			if((collisionLayer.getCell(xVarF, yVarF).getTile().getProperties().containsKey("blocked"))){
-				System.out.println("BEFORE xVar: " + xVarF + " | yVar: " + yVarF);
+				//System.out.println("BEFORE xVar: " + xVarF + " | yVar: " + yVarF);
 				shouldFall = false;
-				System.out.println("AFTER xVar: " + xVarF + " | yVar: " + yVarF);
+				//System.out.println("AFTER xVar: " + xVarF + " | yVar: " + yVarF);
 				
 			}
 			else if((collisionLayer.getCell(xVarF2, yVarF).getTile().getProperties().containsKey("blocked"))){
-				System.out.println("BEFORE xVar: " + xVarF + " | yVar: " + yVarF);
+				//System.out.println("BEFORE xVar: " + xVarF + " | yVar: " + yVarF);
 				shouldFall = false;
-				System.out.println("AFTER xVar: " + xVarF + " | yVar: " + yVarF);
+				//System.out.println("AFTER xVar: " + xVarF + " | yVar: " + yVarF);
 			}
 			else if((collisionLayer.getCell(xVarF1, yVarF).getTile().getProperties().containsKey("blocked"))){
-				System.out.println("BEFORE xVar: " + xVarF + " | yVar: " + yVarF);
+				//System.out.println("BEFORE xVar: " + xVarF + " | yVar: " + yVarF);
 				shouldFall = false;
-				System.out.println("AFTER xVar: " + xVarF + " | yVar: " + yVarF);
+				//System.out.println("AFTER xVar: " + xVarF + " | yVar: " + yVarF);
 			}
 			
 			if(shouldFall) {

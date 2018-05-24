@@ -7,7 +7,7 @@ public abstract class Gun
 	private int ammo;
 	protected int coolDown = 0;
 	private int dmg = 5;
-	private final int COOLDOWN = 100;
+	private final int COOLDOWN = 1;
 	
 	public Gun(String name, int fireRate, int ammo)
 	{

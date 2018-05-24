@@ -54,6 +54,7 @@ public class Bullet
 		else {
 			xPos = xPos - speed;
 		}
+	
 	}
 	
 	public boolean checkCollision() {
