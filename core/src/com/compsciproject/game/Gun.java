@@ -1,62 +1,22 @@
 package com.compsciproject.game;
 
-public abstract class Gun 
+public interface Gun 
 {
-	private String name;
-	private int fireRate;
-	private int ammo;
-	protected int coolDown = 0;
-	private int dmg = 5;
-	private final int COOLDOWN = 5;
 	
-	public Gun(String name, int fireRate, int ammo)
-	{
-		this.name = name;
-		this.fireRate = fireRate;
-		this.ammo = ammo;
-	}
+	public int getDmg();
 	
-	public int getDmg() {	
-		return dmg;
-	}
+	public void bulletLost();
 	
-	public void bulletLost()
-	{
-		ammo--;
-	}
+	public int getCoolDown();
 	
-	public int getFireRate()
-	{
-		return fireRate;
-	}
+	public void addCool();
 	
-	public int getCoolDown() {
-		
-		return coolDown;
-	}
+	public void coolDownWep();
 	
-	public void addCool() {
-		coolDown++;
-	}
-	public void coolDownWep(){
-		if(coolDown > 0) {
-			coolDown--;
-			}
-		}
+	public String getWeaponName();
 	
+	public int getAmmo();
 	
-	public String getWeaponName()
-	{
-		return name;
-	}
-	
-	public int getAmmo()
-	{
-		return ammo;
-	}
-	
-	public void setCooldown(){
-		coolDown += COOLDOWN;
-	}
+	public void setCooldown();
 	
 }
