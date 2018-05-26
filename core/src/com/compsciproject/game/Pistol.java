@@ -6,7 +6,7 @@ public class Pistol implements Gun
 	private int ammo;
 	private int coolDown = 0;
 	private int dmg;
-	private final int COOLDOWN = 25;
+	private final int COOLDOWN = 0;
 	public Pistol()
 	{
 		name = "M1911";
