@@ -18,6 +18,7 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
 public class GameScreen implements Screen{
 	
+	GameMain game;
 	private static ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 	public static int p1Wins = 0;
 	public static int p2Wins = 0;
@@ -41,12 +42,17 @@ public class GameScreen implements Screen{
     private String p1Win;
     private String p2Win;
     
+    public GameScreen (GameMain gameIn) {
+    	game = gameIn;
+	}
+    
+    
     
 	public void show() {
 		font = new BitmapFont(Gdx.files.internal("font.fnt"));
 		float w = Gdx.graphics.getWidth();
         float h = Gdx.graphics.getHeight();
-		walkSheet = new Texture("default_char.png");
+        walkSheet = new Texture("default_char.png");
 		TextureRegion[][] tmp = TextureRegion.split(walkSheet, walkSheet.getWidth() / 4, walkSheet.getHeight() / 4); 
 		batch = new SpriteBatch();
 		Pistol gun1 = new Pistol();
@@ -54,7 +60,7 @@ public class GameScreen implements Screen{
 		bulletImg = new Texture("bullet.png");
 		Gdx.input.setInputProcessor(inputProcessor);
 		camera = new OrthographicCamera();
-	    camera.setToOrtho(false,w,h);
+		camera.setToOrtho(false,w,h);
 	    camera.update();
 	    map = new TmxMapLoader().load("Factory.tmx");
 	    p1 = new Player(50,180, gun1, (TiledMapTileLayer)map.getLayers().get("Tile Layer 2"), p1PlayerName);
@@ -75,11 +81,12 @@ public class GameScreen implements Screen{
 //		charAnimation = new Animation<TextureRegion>(0.5f, walkFrames);
 		stateTime = 0f;
 		tiledMapRenderer = new OrthogonalTiledMapRenderer(map);
-		
 	}
 
 	@Override
 	public void render(float delta) {
+
+		
 		winString = "P1: " + p1Wins + " | P2: " + p2Wins + "";
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -101,14 +108,25 @@ public class GameScreen implements Screen{
 		batch.draw(walkFrames[0], p2.getX(), p2.getY(), 50, 50);
 		camera.update();
 		
-		if(p1Wins >= 24) {
+		if(p1Wins >= 4) {
 			font.draw(batch, p1Win, 580,180);
 			batch.draw(walkFrames[0], (640-250), 200, 500, 500);
+			game.setScreen(new GameMenu(game));
+			
 			
 					}
 		else if(p2Wins >= 24) {
 			font.draw(batch,p2Win, 580, 180);
 			batch.draw(walkFrames[0], (640-250), 200, 500, 500);
+			try {
+				Thread.sleep(1000);
+				this.dispose();
+				game.setScreen(new GameMenu(game));
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			game.setScreen(new GameMenu(game));
 		}
 		
 		for(int u = 0; u<bullets.size();u++) {

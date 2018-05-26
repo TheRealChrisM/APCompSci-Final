@@ -13,12 +13,13 @@ public class GameMain extends Game {
 	@Override
 	public void create () {
 		spriteBatch = new SpriteBatch();
-		this.setScreen(new GameScreen());
+		this.setScreen(new GameScreen(this));
 	}
 	
 	@Override
 	public void render () {
 		super.render();
+		
 	}
 	
 	public static void endGame() {
