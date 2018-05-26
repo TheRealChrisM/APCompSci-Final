@@ -38,8 +38,8 @@ public class GameScreen implements Screen{
     private String winString;
     private String p1PlayerName = "Andrew";
     private String p2PlayerName = "Owen";
-    private String p1Win = p1.getName() + " WINS!";
-    private String p2Win = p2.getName() + " WINS!";
+    private String p1Win;
+    private String p2Win;
     
     
 	public void show() {
@@ -59,6 +59,8 @@ public class GameScreen implements Screen{
 	    map = new TmxMapLoader().load("Factory.tmx");
 	    p1 = new Player(50,180, gun1, (TiledMapTileLayer)map.getLayers().get("Tile Layer 2"), p1PlayerName);
 		p2 = new Player(1175,180, gun2, (TiledMapTileLayer)map.getLayers().get("Tile Layer 2"), p2PlayerName);
+		p1Win = p1.getName() + " WINS!";
+		p2Win = p2.getName() + " WINS!";
 		walkFrames = new TextureRegion[9];
 		walkFrames[0] = tmp[0][3];
 		walkFrames[1] = tmp[1][0];
@@ -102,6 +104,7 @@ public class GameScreen implements Screen{
 		if(p1Wins >= 24) {
 			font.draw(batch, p1Win, 580,180);
 			batch.draw(walkFrames[0], (640-250), 200, 500, 500);
+			
 					}
 		else if(p2Wins >= 24) {
 			font.draw(batch,p2Win, 580, 180);

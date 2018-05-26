@@ -21,6 +21,10 @@ public class GameMain extends Game {
 		super.render();
 	}
 	
+	public static void endGame() {
+		//setScreen(new GameMenu());
+	}
+	
 	@Override
 	public void dispose () {
 		
