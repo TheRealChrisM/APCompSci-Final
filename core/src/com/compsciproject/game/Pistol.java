@@ -1,4 +1,5 @@
 package com.compsciproject.game;
+import com.badlogic.gdx.graphics.Texture;
 
 public class Pistol implements Gun 
 {
@@ -7,15 +8,20 @@ public class Pistol implements Gun
 	private int coolDown = 0;
 	private int dmg;
 	private final int COOLDOWN = 0;
+	private final Texture M1911 = new Texture("Desert eagle 44.png"); 
 	public Pistol()
 	{
-		name = "M1911";
+		name = "Desert Eagle 44";
 		ammo = 16;
 		dmg = 6;
 	}
 	
 	public int getDmg() {
 		return dmg;
+	}
+	
+	public Texture getPicture() {
+		return M1911;
 	}
 	
 	public void bulletLost() {

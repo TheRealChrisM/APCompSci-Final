@@ -75,7 +75,7 @@ public class GameScreen implements Screen{
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false,w,h);
 	    camera.update();
-	    map = new TmxMapLoader().load("Cave.tmx");
+	    map = new TmxMapLoader().load("Factory.tmx");
 	    p1 = new Player(gun1, (TiledMapTileLayer)map.getLayers().get("Tile Layer 2"), p1PlayerName);
 		p2 = new Player(gun2, (TiledMapTileLayer)map.getLayers().get("Tile Layer 2"), p2PlayerName);
 		p1Win = p1.getName() + " WINS!";
