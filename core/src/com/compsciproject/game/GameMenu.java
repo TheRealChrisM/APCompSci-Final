@@ -27,9 +27,14 @@ public class GameMenu implements Screen{
 	public final int EXIT_HEIGHT = 100;
 	public final int HELP_WIDTH = 200;
 	public final int HELP_HEIGHT = 100;
+	public Gun gun1;
+	public Gun gun2;
+	
 	
 	public GameMenu(GameMain gameIn) {
 		game = gameIn;
+		Gun gun1;
+		Gun gun2;
 	}
 	
 	
@@ -57,6 +62,9 @@ public class GameMenu implements Screen{
 		
 		if((Gdx.input.getX() > 960) && (Gdx.input.getX() < (960+SETTINGS_WIDTH)) && (Gdx.input.getY() < (720-160)) && (Gdx.input.getY() > (720-(160+SETTINGS_HEIGHT))) ){
 			batch.draw(settingsActive, 960, 160, SETTINGS_WIDTH, SETTINGS_HEIGHT);
+			if(Gdx.input.isTouched()) {
+				game.setScreen(new SettingsScreen(game));
+			}
 		}
 		else {
 			batch.draw(settingsInactive, 960, 160, SETTINGS_WIDTH, SETTINGS_HEIGHT);
