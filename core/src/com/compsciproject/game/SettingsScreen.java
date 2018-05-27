@@ -35,7 +35,7 @@ public class SettingsScreen implements Screen{
 		   
 		
 		Object[] blob = new Object[6]; 
-		blob[0] = new Pistol(); 
+		blob[0] = new Magnum(); 
 		blob[1] = new Saw(); 
 		blob[2] = new Scar();
 		blob[3] = new DMR();

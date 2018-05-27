@@ -68,8 +68,8 @@ public class GameScreen implements Screen{
 		batch = new SpriteBatch();
 		winChar = new SpriteBatch();
 		
-		Pistol gun1 = new Pistol();
-		Pistol gun2 = new Pistol();
+		Pistol gun1 = new Magnum();
+		Pistol gun2 = new Magnum();
 		bulletImg = new Texture("bullet.png");
 		Gdx.input.setInputProcessor(inputProcessor);
 		camera = new OrthographicCamera();
