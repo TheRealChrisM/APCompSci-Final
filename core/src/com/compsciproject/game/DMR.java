@@ -8,7 +8,7 @@ public class DMR implements Gun
 	private int coolDown = 0;
 	private int dmg;
 	private final int COOLDOWN = 100;
-	private final Texture DMR = new Texture("L115A3.png");
+	private final Texture DMR = new Texture("SR-25.png");
 	
 	public DMR()
 	{
@@ -54,7 +54,7 @@ public class DMR implements Gun
 	}
 	
 	public String toString() {
-		return "l115A3 Semi-auto";
+		return "SR-25 Semi-auto";
 	}
 	
 }
