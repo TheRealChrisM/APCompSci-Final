@@ -123,8 +123,10 @@ public class GameScreen implements Screen{
         tiledMapRenderer.render();
         batch.begin();
 		font.draw(batch,  winString, 1100, 50);
-		batch.draw(walkFrames[0], p1.getX(), p1.getY(), 50, 50);
-		batch.draw(walkFrames2[0], p2.getX(), p2.getY(), 50, 50);
+		
+		batch.draw(walkFrames[p1.getFrame()], p1.getX(), p1.getY(), 50, 50);
+		batch.draw(walkFrames2[p2.getFrame()], p2.getX(), p2.getY(), 50, 50);
+		
 		camera.update();
 		
 		

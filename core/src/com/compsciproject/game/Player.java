@@ -23,6 +23,7 @@ public class Player
 	private boolean jumping = false;
 	private Gun playerGun;
 	private TiledMapTileLayer collisionLayer;
+	private int curFrame = 0;
 	
 	//true for Right, false for left.
 	/**
@@ -39,6 +40,44 @@ public class Player
 		yStart = yVal;
 		playerGun = gunIn;
 		collisionLayer = collisionLayerIn;
+	}
+	
+	public int getFrame() {
+		if((goLeft == false) && (goRight == false)) {
+			return 0;
+		}
+		else if(goLeft) {
+			if(curFrame <= 4) {
+				curFrame = 5;
+				return curFrame;
+			}
+			else if(curFrame == 8) {
+				curFrame = 5;
+				return curFrame;
+			}
+			else {
+				curFrame++;
+				return curFrame;
+			}
+		}
+		else if(goRight) {
+			if(curFrame == 0) {
+				curFrame = 1;
+				return curFrame;
+			}
+			else if(curFrame >= 4) {
+				curFrame = 1;
+				return curFrame;
+			}
+			else {
+				curFrame++;
+				return curFrame;
+			}
+		}
+		
+		
+		
+		return 0;
 	}
 	
 	public String getName() {
