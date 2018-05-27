@@ -22,8 +22,8 @@ public class Player
 	private Gun playerGun;
 	private TiledMapTileLayer collisionLayer;
 	private int curFrame = 0;
-	private int[] xLocation = {50, 1175};
-    private int[] yLocation = {180, 180};
+	private int[] xLocation = {50, 1175, 50, 1024, 656, 416};
+    private int[] yLocation = {180, 180, 500, 400, 384, 544};
 	
 	//true for Right, false for left.
 	/**
