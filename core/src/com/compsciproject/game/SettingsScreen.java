@@ -34,13 +34,16 @@ public class SettingsScreen implements Screen{
 		TextField playerTwoText = new TextField("", skin);    
 		   
 		
-		Object[] blob = new Object[6]; 
+		Object[] blob = new Object[9]; 
 		blob[0] = new Magnum(); 
 		blob[1] = new Saw(); 
 		blob[2] = new Scar();
 		blob[3] = new DMR();
 		blob[4] = new Ak();
 		blob[5] = new ShotGun();
+		blob[6] = new DesertEagle();
+		blob[7] = new M1911();
+		blob[8] = new Sniper();
 		
 		final SelectBox<Object> p1Wep = new SelectBox<Object>(skin); 
 		final SelectBox<Object> p2Wep = new SelectBox<Object>(skin); 
