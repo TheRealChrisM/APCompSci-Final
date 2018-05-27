@@ -23,6 +23,7 @@ public class GameScreen implements Screen{
 	public static int p1Wins = 0;
 	public static int p2Wins = 0;
 	SpriteBatch batch;
+	SpriteBatch winChar;
 	Texture img;
 	//Animation<TextureRegion> charAnimation;
 	TextureRegion[] walkFrames;
@@ -41,6 +42,8 @@ public class GameScreen implements Screen{
     private String p2PlayerName = "Owen";
     private String p1Win;
     private String p2Win;
+    int frameSinceWin = 0;
+    boolean gameEnd = false;
     
     public GameScreen (GameMain gameIn) {
     	game = gameIn;
@@ -55,6 +58,8 @@ public class GameScreen implements Screen{
         walkSheet = new Texture("default_char.png");
 		TextureRegion[][] tmp = TextureRegion.split(walkSheet, walkSheet.getWidth() / 4, walkSheet.getHeight() / 4); 
 		batch = new SpriteBatch();
+		winChar = new SpriteBatch();
+		
 		Pistol gun1 = new Pistol();
 		Pistol gun2 = new Pistol();
 		bulletImg = new Texture("bullet.png");
@@ -85,8 +90,8 @@ public class GameScreen implements Screen{
 
 	@Override
 	public void render(float delta) {
-
-		
+	
+	if(!(gameEnd)) {
 		winString = "P1: " + p1Wins + " | P2: " + p2Wins + "";
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -102,46 +107,55 @@ public class GameScreen implements Screen{
 		p2.fall();
 		tiledMapRenderer.setView(camera);
         tiledMapRenderer.render();
-		batch.begin();
+        batch.begin();
 		font.draw(batch,  winString, 1100, 50);
 		batch.draw(walkFrames[0], p1.getX(), p1.getY(), 50, 50);
 		batch.draw(walkFrames[0], p2.getX(), p2.getY(), 50, 50);
 		camera.update();
 		
-		if(p1Wins >= 4) {
-			font.draw(batch, p1Win, 580,180);
-			batch.draw(walkFrames[0], (640-250), 200, 500, 500);
-			game.setScreen(new GameMenu(game));
-			
-			
-					}
-		else if(p2Wins >= 24) {
-			font.draw(batch,p2Win, 580, 180);
-			batch.draw(walkFrames[0], (640-250), 200, 500, 500);
-			try {
-				Thread.sleep(1000);
-				this.dispose();
-				game.setScreen(new GameMenu(game));
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			game.setScreen(new GameMenu(game));
-		}
 		
 		for(int u = 0; u<bullets.size();u++) {
 			batch.draw(bulletImg, bullets.get(u).getXPos(), bullets.get(u).getYPos(), 30, 30);
 		}
-		
 		batch.end();
-		
 		checkBullets();
-		
 		p1.coolDown();
 		p2.coolDown();
+	}
+	
+	
+	if(p1Wins >= 24) {
+		winChar.begin();
+		font.draw(winChar, p1Win, 580,180);
+		winChar.draw(walkFrames[0], (640-250), 200, 500, 500);
+		gameEnd = true;
+		winChar.end();
+	}
+	else if(p2Wins >= 24) {
+		winChar.begin();
+		font.draw(winChar,p2Win, 580, 180);
+		winChar.draw(walkFrames[0], (640-250), 200, 500, 500);
+		gameEnd = true;
+		winChar.end();
+	}
+	
+		if((p2Wins >= 24) || (p1Wins >= 24)) {
+			frameSinceWin++;
+			gotoMenu();
+		}
+		
 		
 	}
 
+	
+	public void gotoMenu() {
+		
+		if(frameSinceWin > 500) {
+			this.dispose();
+			game.setScreen(new GameMenu(game));
+		}
+	}
+	
 	@Override
 	public void resize(int width, int height) {
 		// TODO Auto-generated method stub
@@ -169,7 +183,7 @@ public class GameScreen implements Screen{
 	@Override
 	public void dispose() {
 		batch.dispose();
-		img.dispose();
+		winChar.dispose();
 		
 	}
 	

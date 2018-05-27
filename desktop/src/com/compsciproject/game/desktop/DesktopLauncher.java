@@ -11,7 +11,7 @@ public class DesktopLauncher {
 		config.title="Zappy Dudes";
 		config.width = 1280;
 		config.height = 720;
-		
+		config.fullscreen = true;
 		
 		new LwjglApplication(new GameMain(), config);
 	}
