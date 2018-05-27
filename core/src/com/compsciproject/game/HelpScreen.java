@@ -1,5 +1,6 @@
 package com.compsciproject.game;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -16,7 +17,7 @@ public class HelpScreen implements Screen{
 	@Override
 	public void show() {
 		background = new SpriteBatch();
-		bg = new Texture("menu.png");
+		bg = new Texture("help.png");
 	}
 
 	@Override
@@ -24,6 +25,10 @@ public class HelpScreen implements Screen{
 		background.begin();
 		background.draw(bg, 0, 0, 1280, 720);
 		background.end();
+		
+		if(Gdx.input.isTouched()) {
+			game.setScreen(new GameMenu(game));
+		}
 	}
 
 	@Override

@@ -53,6 +53,12 @@ public class GameScreen implements Screen{
     
     
 	public void show() {
+		p1Wins = 0;
+		p2Wins = 0;
+		for(int u = 0; u < bullets.size(); u++) {
+			bullets.remove(u);
+			u--;
+		}
 		font = new BitmapFont(Gdx.files.internal("font.fnt"));
 		float w = Gdx.graphics.getWidth();
         float h = Gdx.graphics.getHeight();
@@ -170,7 +176,7 @@ public class GameScreen implements Screen{
 	
 	public void gotoMenu() {
 		
-		if(frameSinceWin > 500) {
+		if(frameSinceWin > 200) {
 			this.dispose();
 			game.setScreen(new GameMenu(game));
 		}
