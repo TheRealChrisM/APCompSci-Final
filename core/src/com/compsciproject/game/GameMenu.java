@@ -91,7 +91,7 @@ public class GameMenu implements Screen{
 		}
 		if((Gdx.input.getX() > 970) && (Gdx.input.getX() < (970+PLAY_WIDTH)) && (Gdx.input.getY() < (720-400)) && (Gdx.input.getY() > (720-(400+PLAY_HEIGHT)))) {
 			batch.draw(helpActive, 970, 400, HELP_WIDTH, HELP_HEIGHT);
-			if(Gdx.input.isTouched()) {
+			if(Gdx.input.justTouched()) {
 				game.setScreen(new HelpScreen(game));
 			}
 		}

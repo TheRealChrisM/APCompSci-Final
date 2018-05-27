@@ -1,6 +1,7 @@
 package com.compsciproject.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -25,14 +26,18 @@ public class SettingsScreen implements Screen{
 	
 	@Override
 	public void show() {
+		Preferences prefs = Gdx.app.getPreferences("zappy_boys_setings");
 		skin = new Skin(Gdx.files.internal("neon-ui.json"));
 		table = new Table();
 	    stage = new Stage();
+	    
+	    Label settingsLabel = new Label("SETTINGS:", skin);
 		Label playerOneLabel = new Label("Player 1:", skin);
-		TextField playerOneText = new TextField("", skin);
+		TextField playerOneText = new TextField(prefs.getString("player1Name"), skin);
 		Label playerTwoLabel = new Label("Player 2:", skin);
-		TextField playerTwoText = new TextField("", skin);    
-		   
+		TextField playerTwoText = new TextField(prefs.getString("player2Name"), skin);    
+		Label mapLabel = new Label("Map: ", skin);
+		
 		
 		Object[] blob = new Object[6]; 
 		blob[0] = new Pistol(); 
@@ -42,12 +47,19 @@ public class SettingsScreen implements Screen{
 		blob[4] = new Ak();
 		blob[5] = new ShotGun();
 		
+		Object[] maps = new Object[2];
+		maps[0] = new String("Factory.tmx");
+		maps[1] = new String("Cave.tmx");
+		
+		final SelectBox<Object> mapOpt = new SelectBox<Object>(skin); 
 		final SelectBox<Object> p1Wep = new SelectBox<Object>(skin); 
 		final SelectBox<Object> p2Wep = new SelectBox<Object>(skin); 
 		p1Wep.setItems(blob); 
 		p2Wep.setItems(blob);
+		mapOpt.setItems(maps);
 		
-		
+		table.add(settingsLabel);
+		table.row();
 		table.add(playerOneLabel);
 		table.add(playerOneText).width(100);
 		table.add(p1Wep);
@@ -55,6 +67,9 @@ public class SettingsScreen implements Screen{
 		table.add(playerTwoLabel);
 		table.add(playerTwoText).width(100);
 		table.add(p2Wep);
+		table.row();
+		table.add(mapLabel);
+		table.add(mapOpt);
 		table.setFillParent(true);
 	    stage.addActor(table);
 	    Gdx.input.setInputProcessor(stage);
