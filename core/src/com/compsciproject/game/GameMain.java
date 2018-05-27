@@ -19,11 +19,13 @@ public class GameMain extends Game {
 		
 		//instantiates and checks for preferences
 		Preferences prefs = Gdx.app.getPreferences("zappy_boys_setings");
-		if(prefs.getBoolean("firstTime")) {
-			prefs.putString("player1Name", "Player 1");
-			prefs.putString("player2Name", "Player 2");
+		if(!(prefs.getBoolean("firstTime"))) {
+			prefs.putString("player1Name", "Player 1aa");
+			prefs.putString("player2Name", "Player 2a");
 			prefs.putString("map", "Factory.tmx");
+			prefs.putBoolean("firstTime", true);
 			prefs.flush();
+			
 		}
 		
 		
