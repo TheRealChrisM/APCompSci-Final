@@ -54,5 +54,8 @@ public class ShotGun implements Gun
 	public void setCooldown() {
 		coolDown += COOLDOWN;
 	}
+	public String toString() {
+		return "Remington 870";
+	}
 	
 }

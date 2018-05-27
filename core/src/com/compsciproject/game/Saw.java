@@ -10,5 +10,4 @@ public class Saw extends AssaultRifle{
 		return Saw;
 	}
 	
-
 }

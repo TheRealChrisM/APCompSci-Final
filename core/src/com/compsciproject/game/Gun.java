@@ -19,4 +19,6 @@ public interface Gun
 	
 	public void setCooldown();
 	
+	
+	
 }

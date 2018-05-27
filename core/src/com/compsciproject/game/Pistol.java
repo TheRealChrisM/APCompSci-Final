@@ -53,6 +53,9 @@ public class Pistol implements Gun
 		coolDown += COOLDOWN;
 	}
 	
+	public String toString() {
+		return "Desert Eagle 44";
+	}
 	
 	
 }

@@ -53,4 +53,8 @@ public class DMR implements Gun
 		coolDown += COOLDOWN;
 	}
 	
+	public String toString() {
+		return "l115A3 Semi-auto";
+	}
+	
 }
