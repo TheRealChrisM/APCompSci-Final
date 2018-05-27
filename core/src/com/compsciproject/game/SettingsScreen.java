@@ -39,13 +39,16 @@ public class SettingsScreen implements Screen{
 		Label mapLabel = new Label("Map: ", skin);
 		
 		
-		Object[] blob = new Object[6]; 
+		Object[] blob = new Object[9]; 
 		blob[0] = new Magnum(); 
 		blob[1] = new Saw(); 
 		blob[2] = new Scar();
 		blob[3] = new DMR();
 		blob[4] = new Ak();
 		blob[5] = new ShotGun();
+		blob[6] = new DesertEagle();
+		blob[7] = new M1911();
+		blob[8] = new Sniper();
 		
 		Object[] maps = new Object[2];
 		maps[0] = new String("Factory.tmx");
