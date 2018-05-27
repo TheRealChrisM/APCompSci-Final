@@ -26,7 +26,7 @@ public class HelpScreen implements Screen{
 		background.draw(bg, 0, 0, 1280, 720);
 		background.end();
 		
-		if(Gdx.input.isTouched()) {
+		if(Gdx.input.justTouched()) {
 			game.setScreen(new GameMenu(game));
 		}
 	}

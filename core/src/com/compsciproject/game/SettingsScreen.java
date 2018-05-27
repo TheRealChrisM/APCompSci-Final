@@ -28,28 +28,36 @@ public class SettingsScreen implements Screen{
 		skin = new Skin(Gdx.files.internal("neon-ui.json"));
 		table = new Table();
 	    stage = new Stage();
-		nameLabel = new Label("Name:", skin);
-		table.add(nameLabel);
-		TextField nameText = new TextField("bsdhbhj", skin);
-		Label addressLabel = new Label("Address:", skin);
-		TextField addressText = new TextField("asfddsa", skin);
-		ImageButton imgBtn = new ImageButton(skin);    
+		Label playerOneLabel = new Label("Player 1:", skin);
+		TextField playerOneText = new TextField("", skin);
+		Label playerTwoLabel = new Label("Player 2:", skin);
+		TextField playerTwoText = new TextField("", skin);    
 		   
 		
-		Object[] blob = new Object[2]; 
+		Object[] blob = new Object[6]; 
 		blob[0] = new Pistol(); 
-		blob[1] = new Pistol(); 
-		final SelectBox<Object> sb = new SelectBox<Object>(skin); 
-		sb.setItems(blob); 
+		blob[1] = new Saw(); 
+		blob[2] = new Scar();
+		blob[3] = new DMR();
+		blob[4] = new Ak();
+		blob[5] = new ShotGun();
+		
+		final SelectBox<Object> p1Wep = new SelectBox<Object>(skin); 
+		final SelectBox<Object> p2Wep = new SelectBox<Object>(skin); 
+		p1Wep.setItems(blob); 
+		p2Wep.setItems(blob);
 		
 		
-		table.add(nameText).width(100);
+		table.add(playerOneLabel);
+		table.add(playerOneText).width(100);
+		table.add(p1Wep);
 		table.row();
-		table.add(addressLabel);
-		table.add(addressText).width(100);
-		table.add(sb);
+		table.add(playerTwoLabel);
+		table.add(playerTwoText).width(100);
+		table.add(p2Wep);
 		table.setFillParent(true);
 	    stage.addActor(table);
+	    Gdx.input.setInputProcessor(stage);
 	}
 
 	@Override
@@ -57,6 +65,7 @@ public class SettingsScreen implements Screen{
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
+
 		stage.draw();
 		
 	}
