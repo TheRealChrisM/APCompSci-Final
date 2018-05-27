@@ -44,12 +44,12 @@ public class Player
 			return 0;
 		}
 		else if(goLeft) {
-			if(curFrame <= 4) {
-				curFrame = 5;
+			if(curFrame <= 8) {
+				curFrame = 10;
 				return curFrame;
 			}
-			else if(curFrame == 8) {
-				curFrame = 5;
+			else if(curFrame == 16) {
+				curFrame = 10;
 				return curFrame;
 			}
 			else {
@@ -62,7 +62,7 @@ public class Player
 				curFrame = 1;
 				return curFrame;
 			}
-			else if(curFrame >= 4) {
+			else if(curFrame >= 8) {
 				curFrame = 1;
 				return curFrame;
 			}

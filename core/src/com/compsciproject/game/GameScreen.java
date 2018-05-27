@@ -81,27 +81,43 @@ public class GameScreen implements Screen{
 		p1Win = p1.getName() + " WINS!";
 		p2Win = p2.getName() + " WINS!";
 		
-		walkFrames = new TextureRegion[9];
+		walkFrames = new TextureRegion[17];
 		walkFrames[0] = tmp[0][3];
 		walkFrames[1] = tmp[1][0];
-		walkFrames[2] = tmp[1][1];
-		walkFrames[3] = tmp[1][2];
-		walkFrames[4] = tmp[1][3];
-		walkFrames[5] = tmp[2][0];
-		walkFrames[6] = tmp[2][1];
-		walkFrames[7] = tmp[2][2];
-		walkFrames[8] = tmp[2][3];
+		walkFrames[2] = tmp[1][0];
+		walkFrames[3] = tmp[1][1];
+		walkFrames[4] = tmp[1][1];
+		walkFrames[5] = tmp[1][2];
+		walkFrames[6] = tmp[1][2];
+		walkFrames[7] = tmp[1][3];
+		walkFrames[8] = tmp[1][3];
+		walkFrames[9] = tmp[2][0];
+		walkFrames[10] = tmp[2][0];
+		walkFrames[11] = tmp[2][1];
+		walkFrames[12] = tmp[2][1];
+		walkFrames[13] = tmp[2][2];
+		walkFrames[14] = tmp[2][2];
+		walkFrames[15] = tmp[2][3];
+		walkFrames[16] = tmp[2][3];
 		
-		walkFrames2 = new TextureRegion[9];
+		walkFrames2 = new TextureRegion[17];
 		walkFrames2[0] = tmp2[0][3];
 		walkFrames2[1] = tmp2[1][0];
-		walkFrames2[2] = tmp2[1][1];
-		walkFrames2[3] = tmp2[1][2];
-		walkFrames2[4] = tmp2[1][3];
-		walkFrames2[5] = tmp2[2][0];
-		walkFrames2[6] = tmp2[2][1];
-		walkFrames2[7] = tmp2[2][2];
-		walkFrames2[8] = tmp2[2][3];
+		walkFrames2[2] = tmp2[1][0];
+		walkFrames2[3] = tmp2[1][1];
+		walkFrames2[4] = tmp2[1][1];
+		walkFrames2[5] = tmp2[1][2];
+		walkFrames2[6] = tmp2[1][2];
+		walkFrames2[7] = tmp2[1][3];
+		walkFrames2[8] = tmp2[1][3];
+		walkFrames2[9] = tmp2[2][0];
+		walkFrames2[10] = tmp2[2][0];
+		walkFrames2[11] = tmp2[2][1];
+		walkFrames2[12] = tmp2[2][1];
+		walkFrames2[13] = tmp2[2][2];
+		walkFrames2[14] = tmp2[2][2];
+		walkFrames2[15] = tmp2[2][3];
+		walkFrames2[16] = tmp2[2][3];
 //		charAnimation = new Animation<TextureRegion>(0.5f, walkFrames);
 		stateTime = 0f;
 		tiledMapRenderer = new OrthogonalTiledMapRenderer(map);
@@ -155,7 +171,7 @@ public class GameScreen implements Screen{
 	else if(p2Wins >= 24) {
 		winChar.begin();
 		font.draw(winChar,p2Win, 580, 180);
-		winChar.draw(walkFrames[0], (640-250), 200, 500, 500);
+		winChar.draw(walkFrames2[0], (640-250), 200, 500, 500);
 		gameEnd = true;
 		winChar.end();
 	}
@@ -207,6 +223,11 @@ public class GameScreen implements Screen{
 
 	@Override
 	public void dispose() {
+		p1.respawn();
+		p2.respawn();
+		frameSinceWin = 0;
+		p1Wins = 0;
+		p2Wins = 0;
 		batch.dispose();
 		winChar.dispose();
 		

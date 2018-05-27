@@ -1,5 +1,7 @@
 package com.compsciproject.game;
 
+import com.badlogic.gdx.graphics.Texture;
+
 public class ShotGun implements Gun
 {
 	private String name ;
@@ -7,6 +9,7 @@ public class ShotGun implements Gun
 	private int coolDown = 0;
 	private int dmg;
 	private final int COOLDOWN = 75;
+	private final Texture Remington = new Texture("Remington 870.png");
 	
 	public ShotGun()
 	{
@@ -17,6 +20,11 @@ public class ShotGun implements Gun
 	public int getDmg() {
 		return dmg;
 	}
+	
+	public Texture getPicture() {
+		return Remington;
+	}
+	
 	
 	public void bulletLost() {
 		ammo--;
