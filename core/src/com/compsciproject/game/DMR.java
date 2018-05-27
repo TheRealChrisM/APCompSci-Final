@@ -1,4 +1,5 @@
 package com.compsciproject.game;
+import com.badlogic.gdx.graphics.Texture;
 
 public class DMR implements Gun
 {
@@ -7,12 +8,17 @@ public class DMR implements Gun
 	private int coolDown = 0;
 	private int dmg;
 	private final int COOLDOWN = 100;
+	private final Texture DMR = new Texture("L115A3.png");
 	
 	public DMR()
 	{
 		dmg = 12;
 		name = "SR-25";
 		ammo = 10;
+	}
+	
+	public Texture getPicture() {
+		return DMR;
 	}
 	public int getDmg() {
 		return dmg;
