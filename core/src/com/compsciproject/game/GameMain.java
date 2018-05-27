@@ -2,6 +2,8 @@ package com.compsciproject.game;
 
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class GameMain extends Game {
@@ -14,6 +16,18 @@ public class GameMain extends Game {
 	public void create () {
 		spriteBatch = new SpriteBatch();
 		this.setScreen(new GameMenu(this));
+		
+		//instantiates and checks for preferences
+		Preferences prefs = Gdx.app.getPreferences("zappy_boys_setings");
+		if(prefs.getBoolean("firstTime")) {
+			prefs.putString("player1Name", "Player 1");
+			prefs.putString("player2Name", "Player 2");
+			prefs.putString("map", "Factory.tmx");
+			prefs.flush();
+		}
+		
+		
+		
 	}
 	
 	@Override
