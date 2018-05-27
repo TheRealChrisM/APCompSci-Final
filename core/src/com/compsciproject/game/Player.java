@@ -13,8 +13,6 @@ public class Player
 	
 	private String name = "";  
 	private int jumps = 0;
-	private int xStart;
-	private int yStart;
 	private int y;
 	private int x;
 	private boolean goRight = false;
@@ -24,6 +22,8 @@ public class Player
 	private Gun playerGun;
 	private TiledMapTileLayer collisionLayer;
 	private int curFrame = 0;
+	private int[] xLocation = {50, 1175};
+    private int[] yLocation = {180, 180};
 	
 	//true for Right, false for left.
 	/**
@@ -31,13 +31,10 @@ public class Player
 	 * @param xVal what x value player should be at.
 	 * @param yVal what y value player should be at.
 	 */
-	public Player(int xVal, int yVal, Gun gunIn, TiledMapTileLayer collisionLayerIn, String nameIn)
+	public Player(Gun gunIn, TiledMapTileLayer collisionLayerIn, String nameIn)
 	{
+		respawn();
 		name = nameIn;
-		x = xVal;
-		xStart = xVal;
-		y = yVal;
-		yStart = yVal;
 		playerGun = gunIn;
 		collisionLayer = collisionLayerIn;
 	}
@@ -85,8 +82,9 @@ public class Player
 	}
 	
 	public void respawn() {
-		x = xStart;
-		y = yStart;
+		int num = (int) (Math.random() * xLocation.length);
+		x = xLocation[num];
+		y = yLocation[num];
 	}
 	
 	public Bullet fire(boolean fireDirection) {
