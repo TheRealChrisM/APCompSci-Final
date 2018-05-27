@@ -1,7 +1,6 @@
 package com.compsciproject.game;
 
 import java.util.ArrayList;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -77,8 +76,8 @@ public class GameScreen implements Screen{
 		camera.setToOrtho(false,w,h);
 	    camera.update();
 	    map = new TmxMapLoader().load("Cave.tmx");
-	    p1 = new Player(50,180, gun1, (TiledMapTileLayer)map.getLayers().get("Tile Layer 2"), p1PlayerName);
-		p2 = new Player(1175,180, gun2, (TiledMapTileLayer)map.getLayers().get("Tile Layer 2"), p2PlayerName);
+	    p1 = new Player(gun1, (TiledMapTileLayer)map.getLayers().get("Tile Layer 2"), p1PlayerName);
+		p2 = new Player(gun2, (TiledMapTileLayer)map.getLayers().get("Tile Layer 2"), p2PlayerName);
 		p1Win = p1.getName() + " WINS!";
 		p2Win = p2.getName() + " WINS!";
 		
