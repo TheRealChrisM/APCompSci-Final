@@ -25,13 +25,14 @@ public class GameScreen implements Screen{
 	SpriteBatch batch;
 	SpriteBatch winChar;
 	Texture img;
-	//Animation<TextureRegion> charAnimation;
 	TextureRegion[] walkFrames;
-	Texture walkSheet;
+	TextureRegion[] walkFrames2;
+	Texture walkSheetP1;
+	Texture walkSheetP2;
 	float stateTime;
 	public static Player p1;
 	public static Player p2;
-	MyInputProcessor inputProcessor = new MyInputProcessor();
+	MyInputProcessor inputProcessor = new MyInputProcessor(this);
 	TiledMap map;
 	OrthographicCamera camera;
     TiledMapRenderer tiledMapRenderer;
@@ -55,8 +56,10 @@ public class GameScreen implements Screen{
 		font = new BitmapFont(Gdx.files.internal("font.fnt"));
 		float w = Gdx.graphics.getWidth();
         float h = Gdx.graphics.getHeight();
-        walkSheet = new Texture("default_char.png");
-		TextureRegion[][] tmp = TextureRegion.split(walkSheet, walkSheet.getWidth() / 4, walkSheet.getHeight() / 4); 
+        walkSheetP1 = new Texture("p1.png");
+        walkSheetP2 = new Texture("p2.png.");
+        TextureRegion[][] tmp2 = TextureRegion.split(walkSheetP2, walkSheetP2.getWidth() / 4, walkSheetP2.getHeight() / 4);
+		TextureRegion[][] tmp = TextureRegion.split(walkSheetP1, walkSheetP1.getWidth() / 4, walkSheetP1.getHeight() / 4); 
 		batch = new SpriteBatch();
 		winChar = new SpriteBatch();
 		
@@ -67,11 +70,12 @@ public class GameScreen implements Screen{
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false,w,h);
 	    camera.update();
-	    map = new TmxMapLoader().load("Cave.tmx");
-	    p1 = new Player(50,140, gun1, (TiledMapTileLayer)map.getLayers().get("Tile Layer 2"), p1PlayerName);
-		p2 = new Player(1175,120, gun2, (TiledMapTileLayer)map.getLayers().get("Tile Layer 2"), p2PlayerName);
+	    map = new TmxMapLoader().load("Factory.tmx");
+	    p1 = new Player(50,180, gun1, (TiledMapTileLayer)map.getLayers().get("Tile Layer 2"), p1PlayerName);
+		p2 = new Player(1175,180, gun2, (TiledMapTileLayer)map.getLayers().get("Tile Layer 2"), p2PlayerName);
 		p1Win = p1.getName() + " WINS!";
 		p2Win = p2.getName() + " WINS!";
+		
 		walkFrames = new TextureRegion[9];
 		walkFrames[0] = tmp[0][3];
 		walkFrames[1] = tmp[1][0];
@@ -83,6 +87,16 @@ public class GameScreen implements Screen{
 		walkFrames[7] = tmp[2][2];
 		walkFrames[8] = tmp[2][3];
 		
+		walkFrames2 = new TextureRegion[9];
+		walkFrames2[0] = tmp2[0][3];
+		walkFrames2[1] = tmp2[1][0];
+		walkFrames2[2] = tmp2[1][1];
+		walkFrames2[3] = tmp2[1][2];
+		walkFrames2[4] = tmp2[1][3];
+		walkFrames2[5] = tmp2[2][0];
+		walkFrames2[6] = tmp2[2][1];
+		walkFrames2[7] = tmp2[2][2];
+		walkFrames2[8] = tmp2[2][3];
 //		charAnimation = new Animation<TextureRegion>(0.5f, walkFrames);
 		stateTime = 0f;
 		tiledMapRenderer = new OrthogonalTiledMapRenderer(map);
@@ -110,7 +124,7 @@ public class GameScreen implements Screen{
         batch.begin();
 		font.draw(batch,  winString, 1100, 50);
 		batch.draw(walkFrames[0], p1.getX(), p1.getY(), 50, 50);
-		batch.draw(walkFrames[0], p2.getX(), p2.getY(), 50, 50);
+		batch.draw(walkFrames2[0], p2.getX(), p2.getY(), 50, 50);
 		camera.update();
 		
 		
@@ -147,6 +161,10 @@ public class GameScreen implements Screen{
 		
 	}
 
+	public void exitToMenu() {
+		this.dispose();
+		game.setScreen(new GameMenu(game));	
+	}
 	
 	public void gotoMenu() {
 		

@@ -4,6 +4,13 @@ import com.badlogic.gdx.InputProcessor;
 
 public class MyInputProcessor implements InputProcessor {
 
+	GameScreen game;
+	
+	public MyInputProcessor(GameScreen gameIn) {
+		game = gameIn;
+	}
+	
+	
 	@Override
 	public boolean keyDown(int keycode) {
 		switch(keycode) {
@@ -37,7 +44,10 @@ public class MyInputProcessor implements InputProcessor {
 		//O
 		case(43): GameScreen.move(10);
 			break;
+		case(131): game.exitToMenu();
+			break;
 		}
+		
 		return false;
 	}
 
