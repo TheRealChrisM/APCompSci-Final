@@ -1,25 +1,29 @@
 package com.compsciproject.game;
 
+import com.badlogic.gdx.graphics.Texture;
 
-public class Pistol implements Gun 
+public class Sniper implements Gun
 {
-	private String name;
-	private int ammo = 16;
+	private String name ;
+	private int ammo;
 	private int coolDown = 0;
 	private int dmg;
-	private final int COOLDOWN = 0;
-	 
-	public Pistol(String name, int cool, int dmg)
-	{
-		this.name = name;;
-		this.coolDown = cool;
-		this.dmg = dmg;
-	}
+	private final int COOLDOWN = 75;
+	private final Texture Sn = new Texture("L115A3.png");
 	
+	public Sniper()
+	{
+		name = "L115A3";
+		dmg = 15;
+		ammo = 5;
+	}
 	public int getDmg() {
 		return dmg;
 	}
 	
+	public Texture getPicture() {
+		return Sn;
+	}
 	
 	
 	public void bulletLost() {
@@ -50,10 +54,8 @@ public class Pistol implements Gun
 	public void setCooldown() {
 		coolDown += COOLDOWN;
 	}
-	
 	public String toString() {
-		return name;
+		return "L115A3 Sniper";
 	}
-	
 	
 }
