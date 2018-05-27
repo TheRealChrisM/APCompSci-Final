@@ -67,9 +67,9 @@ public class GameScreen implements Screen{
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false,w,h);
 	    camera.update();
-	    map = new TmxMapLoader().load("Factory.tmx");
-	    p1 = new Player(50,180, gun1, (TiledMapTileLayer)map.getLayers().get("Tile Layer 2"), p1PlayerName);
-		p2 = new Player(1175,180, gun2, (TiledMapTileLayer)map.getLayers().get("Tile Layer 2"), p2PlayerName);
+	    map = new TmxMapLoader().load("Cave.tmx");
+	    p1 = new Player(50,140, gun1, (TiledMapTileLayer)map.getLayers().get("Tile Layer 2"), p1PlayerName);
+		p2 = new Player(1175,120, gun2, (TiledMapTileLayer)map.getLayers().get("Tile Layer 2"), p2PlayerName);
 		p1Win = p1.getName() + " WINS!";
 		p2Win = p2.getName() + " WINS!";
 		walkFrames = new TextureRegion[9];
