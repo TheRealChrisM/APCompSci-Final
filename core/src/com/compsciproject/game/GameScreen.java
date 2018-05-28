@@ -41,6 +41,7 @@ public class GameScreen implements Screen{
     Texture bulletImg;
     BitmapFont font;
     private String winString;
+    private String healthString;
     private String p1Win;
     private String p2Win;
     int frameSinceWin = 0;
@@ -132,6 +133,7 @@ public class GameScreen implements Screen{
 	
 	if(!(gameEnd)) {
 		winString = "P1: " + p1Wins + " | P2: " + p2Wins + "";
+		healthString = "P1: " + p1.getHealth() + " | P2: " + p2.getHealth() + "";
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		stateTime += Gdx.graphics.getDeltaTime();
@@ -148,6 +150,7 @@ public class GameScreen implements Screen{
         tiledMapRenderer.render();
         batch.begin();
 		font.draw(batch,  winString, 1100, 50);
+		font.draw(batch,  healthString, 800, 50);
 		batch.draw(walkFrames[p1.getFrame()], p1.getX(), p1.getY(), 50, 50);
 		batch.draw(walkFrames2[p2.getFrame()], p2.getX(), p2.getY(), 50, 50);
 		batch.draw(p1Gun, p1.getX()+25, p1.getY(), 50, 50);
@@ -254,7 +257,7 @@ public class GameScreen implements Screen{
 					m--;
 				}
 				if(noBulletsRemoved && (p1.getX()<bullets.get(m).getXPos()) && ((p1.getX()+50)>bullets.get(m).getXPos()) && (p1.getY()<bullets.get(m).getYPos()) && ((p1.getY()+50)>bullets.get(m).getYPos())){
-					p2.setHealth(bullets.get(m).getDamage());
+					p1.setHealth(bullets.get(m).getDamage());
 				
 					if(p1.getHealth() <= 0) {
 						p1.respawn();
