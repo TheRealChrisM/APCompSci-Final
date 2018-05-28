@@ -9,11 +9,12 @@ public class AssaultRifle implements Gun
 	private int coolDown = 0;
 	private int dmg;
 	private int COOLDOWN;
-	public AssaultRifle(String name, int cool, int damage)
+	public AssaultRifle(String name, int cool, int damage, int ammo)
 	{
 		this.name = name;
 		COOLDOWN = cool;
 		dmg = damage;
+		this.ammo = ammo;
 	}
 	
 	public int getDmg() {

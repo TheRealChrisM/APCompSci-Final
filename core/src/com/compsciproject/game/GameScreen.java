@@ -139,7 +139,7 @@ public class GameScreen implements Screen{
 		healthString = "P1: " + p1.getHealth() + " | P2: " + p2.getHealth() + "";
 
 		winString = prefs.getString("player1Name") + ": " + p1Wins + " | "+ prefs.getString("player2Name") + ": " + p2Wins + "";
-
+		
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		stateTime += Gdx.graphics.getDeltaTime();
@@ -158,7 +158,7 @@ public class GameScreen implements Screen{
 
 	
 		font.draw(batch,  healthString, 800, 50);
-
+		
 		font.draw(batch,  winString, 1000, 50);
 
 		batch.draw(walkFrames[p1.getFrame()], p1.getX(), p1.getY(), 50, 50);
@@ -203,7 +203,7 @@ public class GameScreen implements Screen{
 		winChar.end();
 	}
 	
-		if((p2Wins >= 24) || (p1Wins >= 24)) {
+		if((p2Wins >= 25) || (p1Wins >= 25)) {
 			frameSinceWin++;
 			gotoMenu();
 		}

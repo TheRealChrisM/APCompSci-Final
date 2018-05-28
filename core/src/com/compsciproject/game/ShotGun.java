@@ -15,7 +15,7 @@ public class ShotGun implements Gun
 	{
 		name = "Remington 870";
 		dmg = 35;
-		ammo = 5;
+		ammo = 8;
 	}
 	public int getDmg() {
 		return dmg;
@@ -43,6 +43,11 @@ public class ShotGun implements Gun
 			coolDown--;
 		}
 	}
+	
+	/*public void range()
+	{
+		if (getStart() = getXPos)
+	}*/
 	
 	public String getWeaponName() {
 		return name;
