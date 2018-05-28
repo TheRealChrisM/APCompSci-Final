@@ -44,6 +44,11 @@ public class ShotGun implements Gun
 		}
 	}
 	
+	/*public void range()
+	{
+		if (getStart() = getXPos)
+	}*/
+	
 	public String getWeaponName() {
 		return name;
 	}

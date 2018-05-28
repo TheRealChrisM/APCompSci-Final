@@ -5,6 +5,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 public class Bullet 
 {
 	private int damage;
+	private int start;
 	private int xPos;
 	private int yPos;
 	private int length;
@@ -25,6 +26,7 @@ public class Bullet
 			xPos = x;
 			yPos = y;
 		}
+		start = xPos;
 		this.length = length;
 		direction = facingRight;
 	}
@@ -45,6 +47,11 @@ public class Bullet
 	public int getDamage()
 	{
 		return damage;
+	}
+	
+	public int getStart()
+	{
+		return start;
 	}
 	
 	public void move() {
