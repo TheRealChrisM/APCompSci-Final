@@ -48,7 +48,7 @@ public class GameScreen implements Screen{
     boolean gameEnd = false;
     public static Gun gun1 = new Magnum();
     public static Gun gun2 = new Magnum();
-    
+    Preferences prefs;
     
     public GameScreen (GameMain gameIn) {
     	game = gameIn;
@@ -57,7 +57,7 @@ public class GameScreen implements Screen{
     
     
 	public void show() {
-		Preferences prefs = Gdx.app.getPreferences("zappy_boys_setings");
+		prefs = Gdx.app.getPreferences("zappy_boys_setings");
 		p1Wins = 0;
 		p2Wins = 0;
 		for(int u = 0; u < bullets.size(); u++) {
@@ -132,8 +132,12 @@ public class GameScreen implements Screen{
 	public void render(float delta) {
 	
 	if(!(gameEnd)) {
-		winString = "P1: " + p1Wins + " | P2: " + p2Wins + "";
+
+		
 		healthString = "P1: " + p1.getHealth() + " | P2: " + p2.getHealth() + "";
+
+		winString = prefs.getString("player1Name") + ": " + p1Wins + " | "+ prefs.getString("player2Name") + ": " + p2Wins + "";
+
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		stateTime += Gdx.graphics.getDeltaTime();
@@ -149,12 +153,26 @@ public class GameScreen implements Screen{
 		tiledMapRenderer.setView(camera);
         tiledMapRenderer.render();
         batch.begin();
-		font.draw(batch,  winString, 1100, 50);
+
+	
 		font.draw(batch,  healthString, 800, 50);
+
+		font.draw(batch,  winString, 1000, 50);
+
 		batch.draw(walkFrames[p1.getFrame()], p1.getX(), p1.getY(), 50, 50);
 		batch.draw(walkFrames2[p2.getFrame()], p2.getX(), p2.getY(), 50, 50);
-		batch.draw(p1Gun, p1.getX()+25, p1.getY(), 50, 50);
-		batch.draw(p2Gun, p2.getX()+25, p2.getY(), 50, 50);
+		if(p1.facingLeft()){
+			batch.draw(p1Gun, p1.getX()+25, p1.getY(), -1*(p1Gun.getWidth()), p1Gun.getHeight());
+		}
+		else {
+			batch.draw(p1Gun, p1.getX()+25, p1.getY(), (p1Gun.getWidth()), p1Gun.getHeight());
+		}
+		if(p2.facingLeft()){
+			batch.draw(p2Gun, p2.getX()+25, p2.getY(), -1*(p2Gun.getWidth()), p2Gun.getHeight());
+		}
+		else {
+			batch.draw(p2Gun, p2.getX()+25, p2.getY(), (p2Gun.getWidth()), p2Gun.getHeight());
+		}
 		camera.update();
 		
 		
