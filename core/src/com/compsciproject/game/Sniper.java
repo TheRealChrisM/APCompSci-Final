@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 public class Sniper implements Gun
 {
 	private String name ;
+	private int range;
 	private int ammo;
 	private int coolDown = 0;
 	private int dmg;
@@ -13,6 +14,7 @@ public class Sniper implements Gun
 	
 	public Sniper()
 	{
+		range = 50;
 		name = "L115A3";
 		dmg = 88;
 		ammo = 5;
@@ -21,6 +23,9 @@ public class Sniper implements Gun
 		return dmg;
 	}
 	
+	public int getRange() {
+		return range;
+	}
 	public Texture getPicture() {
 		return Sn;
 	}
