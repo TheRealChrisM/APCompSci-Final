@@ -1,6 +1,7 @@
 package com.compsciproject.game;
 
 import java.util.ArrayList;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.Screen;
@@ -8,6 +9,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -41,7 +43,6 @@ public class GameScreen implements Screen{
     Texture bulletImg;
     BitmapFont font;
     private String winString;
-    private String healthString;
     private String p1Win;
     private String p2Win;
     int frameSinceWin = 0;
@@ -50,8 +51,9 @@ public class GameScreen implements Screen{
     public static Gun gun2 = new Magnum();
     Preferences prefs;
     private boolean shootLeft = false;
-    
-    
+    Texture winsBg;
+    Texture healthP1Bar;
+    Texture healthP2Bar;
     public GameScreen (GameMain gameIn) {
     	game = gameIn;
 	}
@@ -88,6 +90,9 @@ public class GameScreen implements Screen{
 		p2Win = p2.getName() + " WINS!";
 		p1Gun = gun1.getPicture();
 		p2Gun = gun2.getPicture();
+		winsBg = new Texture("pixel.png");
+		healthP1Bar = new Texture("healthP1.png");
+		healthP2Bar = new Texture("healthP2.png");
 		walkFrames = new TextureRegion[17];
 		walkFrames[0] = tmp[0][3];
 		walkFrames[1] = tmp[1][0];
@@ -135,9 +140,6 @@ public class GameScreen implements Screen{
 	
 	if(!(gameEnd)) {
 
-		
-		healthString = "P1: " + p1.getHealth() + " | P2: " + p2.getHealth() + "";
-
 		winString = prefs.getString("player1Name") + ": " + p1Wins + " | "+ prefs.getString("player2Name") + ": " + p2Wins + "";
 		
 		Gdx.gl.glClearColor(1, 0, 0, 1);
@@ -156,11 +158,17 @@ public class GameScreen implements Screen{
         tiledMapRenderer.render();
         batch.begin();
 
-	
-		font.draw(batch,  healthString, 800, 50);
-		
-		font.draw(batch,  winString, 1000, 50);
+        
+        batch.draw(winsBg, 640 - 320 - 100 - 10, 710 - 10, 210, 25);
+        batch.draw(winsBg, 640 + 320 - 100, 710 - 10, 210, 25);
+		GlyphLayout centerWins = new GlyphLayout(font, winString);
+		batch.draw(winsBg, (640- (centerWins.width/2)-25), 700-centerWins.height-(25), centerWins.width+50, centerWins.height+50);
+		System.out.println("WIDTH: "+ centerWins.width + " HEIGHT: "+ centerWins.height);
+		font.draw(batch,  winString, (640- (centerWins.width/2)), 700);
 
+		
+		batch.draw(healthP1Bar, 640 - 320 - 100, 710, p1.getHealth()*2, 15);
+		batch.draw(healthP2Bar, 640 + 320 - 100, 710, p2.getHealth()*2, 15);
 		batch.draw(walkFrames[p1.getFrame()], p1.getX(), p1.getY(), 50, 50);
 		batch.draw(walkFrames2[p2.getFrame()], p2.getX(), p2.getY(), 50, 50);
 		if(p1.shootLeft() || shootLeft){
