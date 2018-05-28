@@ -54,6 +54,11 @@ public class GameScreen implements Screen{
     Texture winsBg;
     Texture healthP1Bar;
     Texture healthP2Bar;
+    private static boolean firingP1L = false;
+    private static boolean firingP1R = false;
+    private static boolean firingP2L = false;
+    private static boolean firingP2R = false;
+    
     public GameScreen (GameMain gameIn) {
     	game = gameIn;
 	}
@@ -156,6 +161,7 @@ public class GameScreen implements Screen{
 		p2.rise();
 		p1.fall();
 		p2.fall();
+		fireLoop();
 		tiledMapRenderer.setView(camera);
         tiledMapRenderer.render();
         batch.begin();
@@ -174,16 +180,16 @@ public class GameScreen implements Screen{
 		batch.draw(walkFrames[p1.getFrame()], p1.getX(), p1.getY(), 50, 50);
 		batch.draw(walkFrames2[p2.getFrame()], p2.getX(), p2.getY(), 50, 50);
 		if(p1.shootLeft() || shootLeft){
-			batch.draw(p1Gun, p1.getX()+25, p1.getY(), -1*(p1Gun.getWidth()), p1Gun.getHeight());
+			batch.draw(p1Gun, p1.getX()+10, p1.getY()+5, -1*(p1Gun.getWidth()), p1Gun.getHeight());
 		}
 		else {
-			batch.draw(p1Gun, p1.getX()+25, p1.getY(), (p1Gun.getWidth()), p1Gun.getHeight());
+			batch.draw(p1Gun, p1.getX()+25, p1.getY()+5, (p1Gun.getWidth()), p1Gun.getHeight());
 		}
 		if(p2.shootLeft() || shootLeft){
-			batch.draw(p2Gun, p2.getX()+25, p2.getY(), -1*(p2Gun.getWidth()), p2Gun.getHeight());
+			batch.draw(p2Gun, p2.getX()+25, p2.getY()+5, -1*(p2Gun.getWidth()), p2Gun.getHeight());
 		}
 		else {
-			batch.draw(p2Gun, p2.getX()+25, p2.getY(), (p2Gun.getWidth()), p2Gun.getHeight());
+			batch.draw(p2Gun, p2.getX()+25, p2.getY()+5, (p2Gun.getWidth()), p2Gun.getHeight());
 		}
 		camera.update();
 		
@@ -277,6 +283,22 @@ public class GameScreen implements Screen{
 			}
 		}
 		
+		public static void fireLoop(){
+			if(firingP1L){
+				fireBullet(p1, false);
+			}
+			if(firingP1R) {
+				fireBullet(p1, true);
+			}
+			if(firingP2L) {
+				fireBullet(p2, false);
+			}
+			if(firingP2R) {
+				fireBullet(p2, true);
+			}
+		}
+		
+		
 		public static void checkBullets() {
 			for(int m = 0; m<bullets.size(); m++) {
 				boolean noBulletsRemoved = true;
@@ -326,13 +348,13 @@ public class GameScreen implements Screen{
 					break;
 				case(6): p2.jump();
 					break;
-				case(7): fireBullet(p1, false);
+				case(7): firingP1L = true;
 					break;
-				case(8): fireBullet(p2, false);
+				case(8): firingP2L = true;
 					break;
-				case(9): fireBullet(p1, true);
+				case(9): firingP1R = true;
 					break;
-				case(10): fireBullet(p2, true);
+				case(10): firingP2R = true;
 					break;
 				case(-1): p1.moveRight(false);
 					break;
@@ -342,6 +364,15 @@ public class GameScreen implements Screen{
 					break;
 				case(-5): p2.moveLeft(false);
 					break;
+				case(-7): firingP1L = false;
+					break;
+				case(-8): firingP2L = false;
+					break;
+				case(-9): firingP1R = false;
+					break;
+				case(-10): firingP2R = false;;
+					break;
+				
 				default: break;
 			}
 		}

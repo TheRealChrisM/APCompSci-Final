@@ -66,6 +66,19 @@ public class MyInputProcessor implements InputProcessor {
 		//J
 		case(38): GameScreen.move(-5);
 			break;
+		//Q
+		case(45): GameScreen.move(-7);
+			break;
+		//U
+		case(49): GameScreen.move(-8);
+			break;
+		//E
+		case(33): GameScreen.move(-9);
+			break;
+		//O
+		case(43): GameScreen.move(-10);
+			break;
+			
 		}
 		return false;
 	}
