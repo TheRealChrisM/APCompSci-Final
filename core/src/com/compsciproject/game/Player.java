@@ -84,7 +84,7 @@ public class Player
 	}
 	
 	public boolean shootLeft() {
-		return (goLeft || shootLeft);
+		return (shootLeft);
 	}
 	
 	public void respawn() {
@@ -99,7 +99,7 @@ public class Player
 		if(ableToShoot()) {
 			Bullet bulletOut = new Bullet(playerGun.getDmg(), x+1, y+10, 1, fireDirection, collisionLayer);
 			playerGun.setCooldown();
-			
+			shootLeft = !(fireDirection);
 			return bulletOut;
 		}
 		return null;
@@ -136,6 +136,7 @@ public class Player
 	
 	public void moveRight(boolean goR) {
 		goRight = goR;
+		shootLeft = !(goR);
 		goRight();
 	}
 	/**
@@ -150,6 +151,7 @@ public class Player
 	}
 	public void moveLeft(boolean goL) {
 		goLeft = goL;
+		shootLeft = goL;
 		goLeft();
 	}
 	/**
