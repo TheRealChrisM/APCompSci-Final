@@ -9,6 +9,10 @@ We are currently still in the alpha phase of the game however plans to continue 
 Grade: TBD/100
 
 Developed by:
-Christopher Marotta
-Andrew Dunlop
-Renzo Nepps
+
+*Christopher Marotta
+
+*Andrew Dunlop
+
+*Renzo Nepps
+
