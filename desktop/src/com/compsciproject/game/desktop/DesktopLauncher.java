@@ -4,7 +4,8 @@ package com.compsciproject.game.desktop;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.compsciproject.game.GameMain;
-
+import com.compsciproject.game.*;
+@SuppressWarnings("unused")
 public class DesktopLauncher {
 	public static void main(String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();

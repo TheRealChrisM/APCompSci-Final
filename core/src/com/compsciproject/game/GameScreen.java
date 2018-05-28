@@ -72,7 +72,7 @@ public class GameScreen implements Screen{
 		float w = Gdx.graphics.getWidth();
         float h = Gdx.graphics.getHeight();
         walkSheetP1 = new Texture("p1.png");
-        walkSheetP2 = new Texture("p2.png.");
+        walkSheetP2 = new Texture("p2.png");
         TextureRegion[][] tmp2 = TextureRegion.split(walkSheetP2, walkSheetP2.getWidth() / 4, walkSheetP2.getHeight() / 4);
 		TextureRegion[][] tmp = TextureRegion.split(walkSheetP1, walkSheetP1.getWidth() / 4, walkSheetP1.getHeight() / 4); 
 		batch = new SpriteBatch();
