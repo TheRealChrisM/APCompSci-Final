@@ -6,6 +6,7 @@ public class ShotGun implements Gun
 {
 	private String name ;
 	private int ammo;
+	private int range;
 	private int coolDown = 0;
 	private int dmg;
 	private final int COOLDOWN = 75;
@@ -13,6 +14,7 @@ public class ShotGun implements Gun
 	
 	public ShotGun()
 	{
+		range = 30;
 		name = "Remington 870";
 		dmg = 93;
 		ammo = 8;
@@ -23,6 +25,10 @@ public class ShotGun implements Gun
 	
 	public Texture getPicture() {
 		return Remington;
+	}
+	
+	public int getRange() {
+		return range;
 	}
 	
 	

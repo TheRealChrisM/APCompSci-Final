@@ -22,6 +22,8 @@ public interface Gun
 	public void setCooldown();
 
 	public Texture getPicture();
+	public int getRange();
+	
 	
 	
 	

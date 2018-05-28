@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 public class DMR implements Gun
 {
 	private String name ;
+	private int range;
 	private int ammo;
 	private int coolDown = 0;
 	private int dmg;
@@ -12,6 +13,7 @@ public class DMR implements Gun
 	
 	public DMR()
 	{
+		range = 50;
 		dmg = 47;
 		name = "SR-25";
 		ammo = 10;
@@ -40,6 +42,10 @@ public class DMR implements Gun
 		if(coolDown > 0) {
 			coolDown--;
 		}
+	}
+	
+	public int getRange() {
+		return range;
 	}
 	
 	public String getWeaponName() {

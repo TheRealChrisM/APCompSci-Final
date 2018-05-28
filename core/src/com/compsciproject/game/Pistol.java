@@ -5,13 +5,15 @@ import com.badlogic.gdx.graphics.Texture;
 public class Pistol implements Gun 
 {
 	private String name;
+	private int range;
 	private int ammo;
 	private int coolDown = 0;
 	private int dmg;
 	private int COOLDOWN = 0;
 	 
-	public Pistol(String name, int cool, int dmg, int ammo)
+	public Pistol(String name, int cool, int dmg, int ammo, int range)
 	{
+		this.range = range;
 		this.name = name;;
 		COOLDOWN = cool;
 		this.dmg = dmg;
@@ -22,6 +24,9 @@ public class Pistol implements Gun
 		return dmg;
 	}
 	
+	public int getRange() {
+		return range;
+	}
 	
 	
 	public void bulletLost() {
