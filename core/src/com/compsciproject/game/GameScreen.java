@@ -139,7 +139,9 @@ public class GameScreen implements Screen{
 	public void render(float delta) {
 	
 	if(!(gameEnd)) {
-
+		
+		
+		
 		winString = prefs.getString("player1Name") + ": " + p1Wins + " | "+ prefs.getString("player2Name") + ": " + p2Wins + "";
 		
 		Gdx.gl.glClearColor(1, 0, 0, 1);
@@ -159,8 +161,8 @@ public class GameScreen implements Screen{
         batch.begin();
 
         
-        batch.draw(winsBg, 640 - 320 - 100 - 10, 710 - 10, 210, 25);
-        batch.draw(winsBg, 640 + 320 - 100, 710 - 10, 210, 25);
+        batch.draw(winsBg, 640 - 320 - 100 - 5, 710 - 5, 210, 25);
+        batch.draw(winsBg, 640 + 320 - 100 - 5, 710 - 5, 210, 25);
 		GlyphLayout centerWins = new GlyphLayout(font, winString);
 		batch.draw(winsBg, (640- (centerWins.width/2)-25), 700-centerWins.height-(25), centerWins.width+50, centerWins.height+50);
 		System.out.println("WIDTH: "+ centerWins.width + " HEIGHT: "+ centerWins.height);
