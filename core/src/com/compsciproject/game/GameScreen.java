@@ -175,14 +175,14 @@ public class GameScreen implements Screen{
 	}
 	
 	
-	if(p1Wins >= 24) {
+	if(p1Wins >= 25) {
 		winChar.begin();
 		font.draw(winChar, p1Win, 580,180);
 		winChar.draw(walkFrames[0], (640-250), 200, 500, 500);
 		gameEnd = true;
 		winChar.end();
 	}
-	else if(p2Wins >= 24) {
+	else if(p2Wins >= 25) {
 		winChar.begin();
 		font.draw(winChar,p2Win, 580, 180);
 		winChar.draw(walkFrames2[0], (640-250), 200, 500, 500);
@@ -264,15 +264,22 @@ public class GameScreen implements Screen{
 					m--;
 				}
 				if(noBulletsRemoved && (p1.getX()<bullets.get(m).getXPos()) && ((p1.getX()+50)>bullets.get(m).getXPos()) && (p1.getY()<bullets.get(m).getYPos()) && ((p1.getY()+50)>bullets.get(m).getYPos())){
+					p2.setHealth(bullets.get(m).getDamage());
 					p2Wins++;
-					p1.respawn();
+					if(p1.getHealth() <= 0) {
+						p1.respawn();
+					}
 					noBulletsRemoved = false;
 					bullets.remove(m);
 					m--;
 				}
 				if(noBulletsRemoved && (p2.getX()<bullets.get(m).getXPos()) && ((p2.getX()+50)>bullets.get(m).getXPos()) && (p2.getY()<bullets.get(m).getYPos()) && ((p2.getY()+50)>bullets.get(m).getYPos())){
+					p2.setHealth(bullets.get(m).getDamage());
 					p1Wins++;
-					p2.respawn();
+					if(p2.getHealth() <= 0) {
+						p2.respawn();
+					}
+					
 					noBulletsRemoved = false;
 					bullets.remove(m);
 					m--;

@@ -8,13 +8,13 @@ public class Sniper implements Gun
 	private int ammo;
 	private int coolDown = 0;
 	private int dmg;
-	private final int COOLDOWN = 75;
+	private final int COOLDOWN = 150;
 	private final Texture Sn = new Texture("L115A3.png");
 	
 	public Sniper()
 	{
 		name = "L115A3";
-		dmg = 15;
+		dmg = 50;
 		ammo = 5;
 	}
 	public int getDmg() {

@@ -24,6 +24,7 @@ public class Player
 	private int curFrame = 0;
 	private int[] xLocation = {50, 1175, 50, 1024, 656, 416};
     private int[] yLocation = {180, 180, 500, 400, 384, 544};
+    private int health = 100;
 	
 	//true for Right, false for left.
 	/**
@@ -38,6 +39,7 @@ public class Player
 		playerGun = gunIn;
 		collisionLayer = collisionLayerIn;
 	}
+	
 	
 	public int getFrame() {
 		if((goLeft == false) && (goRight == false)) {
@@ -86,9 +88,11 @@ public class Player
 	}
 	
 	public void respawn() {
+		health = 100;
 		int num = (int) (Math.random() * xLocation.length);
 		x = xLocation[num];
 		y = yLocation[num];
+		
 	}
 	
 	public Bullet fire(boolean fireDirection) {
@@ -235,5 +239,14 @@ public class Player
 			}	
 		}
 		
+	}
+
+
+	public int getHealth() {
+		return health;
+	}
+	
+	public void setHealth(int damage) {
+		health -= damage;
 	}
 }
