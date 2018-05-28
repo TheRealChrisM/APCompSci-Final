@@ -1,5 +1,6 @@
 package com.compsciproject.game;
 
+import com.badlogic.gdx.graphics.Texture;
 
 public class Pistol implements Gun 
 {
@@ -53,6 +54,11 @@ public class Pistol implements Gun
 	
 	public String toString() {
 		return name;
+	}
+
+	@Override
+	public Texture getPicture() {
+		return null;
 	}
 	
 	

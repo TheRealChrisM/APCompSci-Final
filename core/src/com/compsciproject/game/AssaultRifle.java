@@ -1,5 +1,7 @@
 package com.compsciproject.game;
 
+import com.badlogic.gdx.graphics.Texture;
+
 public class AssaultRifle implements Gun
 {
 	private String name;
@@ -48,5 +50,10 @@ public class AssaultRifle implements Gun
 	}
 	public String toString() {
 		return name;
+	}
+
+	@Override
+	public Texture getPicture() {
+		return null;
 	}
 }

@@ -29,6 +29,8 @@ public class GameScreen implements Screen{
 	TextureRegion[] walkFrames2;
 	Texture walkSheetP1;
 	Texture walkSheetP2;
+	Texture p1Gun;
+	Texture p2Gun;
 	float stateTime;
 	public static Player p1;
 	public static Player p2;
@@ -43,8 +45,8 @@ public class GameScreen implements Screen{
     private String p2Win;
     int frameSinceWin = 0;
     boolean gameEnd = false;
-    public static Gun gun1;
-    public static Gun gun2;
+    public static Gun gun1 = new Magnum();
+    public static Gun gun2 = new Magnum();
     
     
     public GameScreen (GameMain gameIn) {
@@ -81,7 +83,8 @@ public class GameScreen implements Screen{
 		p2 = new Player(gun2, (TiledMapTileLayer)map.getLayers().get("Tile Layer 2"), prefs.getString("player2Name"));
 		p1Win = p1.getName() + " WINS!";
 		p2Win = p2.getName() + " WINS!";
-		
+		p1Gun = gun1.getPicture();
+		p2Gun = gun2.getPicture();
 		walkFrames = new TextureRegion[17];
 		walkFrames[0] = tmp[0][3];
 		walkFrames[1] = tmp[1][0];
@@ -145,11 +148,10 @@ public class GameScreen implements Screen{
         tiledMapRenderer.render();
         batch.begin();
 		font.draw(batch,  winString, 1100, 50);
-		System.out.println(gun1);
-		System.out.println(gun2);
 		batch.draw(walkFrames[p1.getFrame()], p1.getX(), p1.getY(), 50, 50);
 		batch.draw(walkFrames2[p2.getFrame()], p2.getX(), p2.getY(), 50, 50);
-		
+		batch.draw(p1Gun, p1.getX()+25, p1.getY(), 50, 50);
+		batch.draw(p2Gun, p2.getX()+25, p2.getY(), 50, 50);
 		camera.update();
 		
 		

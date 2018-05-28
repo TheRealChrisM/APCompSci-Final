@@ -1,5 +1,7 @@
 package com.compsciproject.game;
 
+import com.badlogic.gdx.graphics.Texture;
+
 public interface Gun 
 {
 	
@@ -18,6 +20,8 @@ public interface Gun
 	public int getAmmo();
 	
 	public void setCooldown();
+
+	public Texture getPicture();
 	
 	
 	
