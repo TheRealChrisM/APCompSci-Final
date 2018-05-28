@@ -28,11 +28,11 @@ public class Bullet
 		}
 		if (facingRight)
 		{
-			this.range = xPos - range; 
+			this.range = xPos + range; 
 		}
 		else
 		{
-			this.range = range + xPos;
+			this.range = xPos - range;
 		}
 		this.length = length;
 		direction = facingRight;
@@ -69,11 +69,14 @@ public class Bullet
 	{
 		if (direction)
 		{
-			return xPos > range;
+			//System.out.println(xPos > range);
+			//System.out.println("Range: " + range + " | xPos: " + xPos);
+			return (xPos < range);
 		}
 		else
 		{
-			return xPos < range;
+			//System.out.println(xPos < range);
+			return (xPos > range);
 		}
 	}
 	

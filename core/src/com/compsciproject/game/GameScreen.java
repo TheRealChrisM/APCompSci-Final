@@ -171,7 +171,7 @@ public class GameScreen implements Screen{
         batch.draw(winsBg, 640 + 320 - 100 - 5, 710 - 5, 210, 25);
 		GlyphLayout centerWins = new GlyphLayout(font, winString);
 		batch.draw(winsBg, (640- (centerWins.width/2)-25), 700-centerWins.height-(25), centerWins.width+50, centerWins.height+50);
-		System.out.println("WIDTH: "+ centerWins.width + " HEIGHT: "+ centerWins.height);
+		//System.out.println("WIDTH: "+ centerWins.width + " HEIGHT: "+ centerWins.height);
 		font.draw(batch,  winString, (640- (centerWins.width/2)), 700);
 
 		
@@ -303,12 +303,12 @@ public class GameScreen implements Screen{
 			for(int m = 0; m<bullets.size(); m++) {
 				boolean noBulletsRemoved = true;
 				bullets.get(m).move();
-				if(bullets.get(m).checkCollision()){
+				if(!bullets.get(m).checkRange()){
 					noBulletsRemoved = false;
 					bullets.remove(m);
 					m--;
 				}
-				else if (!bullets.get(m).checkRange())
+				else if (bullets.get(m).checkCollision())
 				{
 					noBulletsRemoved = false;
 					bullets.remove(m);
