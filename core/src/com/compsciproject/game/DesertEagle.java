@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 public class DesertEagle extends Pistol{
 	private final Texture DE = new Texture("Desert eagle 44.png");
 	public DesertEagle() {
-		super("Desert Eagle", 10, 5);
+		super("Desert Eagle", 50, 15);
 		// TODO Auto-generated constructor stub
 	}
 	public Texture getPicture() {
