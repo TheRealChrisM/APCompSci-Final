@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 public class Pistol implements Gun 
 {
 	private String name;
-	private int ammo = 16;
+	private int ammo;
 	private int coolDown = 0;
 	private int dmg;
 	private int COOLDOWN = 0;

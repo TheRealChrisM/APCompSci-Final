@@ -14,7 +14,7 @@ public class Sniper implements Gun
 	public Sniper()
 	{
 		name = "L115A3";
-		dmg = 55;
+		dmg = 88;
 		ammo = 5;
 	}
 	public int getDmg() {

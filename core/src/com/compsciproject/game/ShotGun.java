@@ -14,7 +14,7 @@ public class ShotGun implements Gun
 	public ShotGun()
 	{
 		name = "Remington 870";
-		dmg = 35;
+		dmg = 93;
 		ammo = 8;
 	}
 	public int getDmg() {
