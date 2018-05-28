@@ -163,13 +163,13 @@ public class GameScreen implements Screen{
 
 		batch.draw(walkFrames[p1.getFrame()], p1.getX(), p1.getY(), 50, 50);
 		batch.draw(walkFrames2[p2.getFrame()], p2.getX(), p2.getY(), 50, 50);
-		if(p1.facingLeft() || shootLeft){
+		if(p1.shootLeft() || shootLeft){
 			batch.draw(p1Gun, p1.getX()+25, p1.getY(), -1*(p1Gun.getWidth()), p1Gun.getHeight());
 		}
 		else {
 			batch.draw(p1Gun, p1.getX()+25, p1.getY(), (p1Gun.getWidth()), p1Gun.getHeight());
 		}
-		if(p2.facingLeft() || shootLeft){
+		if(p2.shootLeft() || shootLeft){
 			batch.draw(p2Gun, p2.getX()+25, p2.getY(), -1*(p2Gun.getWidth()), p2Gun.getHeight());
 		}
 		else {

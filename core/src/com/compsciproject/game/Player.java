@@ -25,7 +25,7 @@ public class Player
 	private int[] xLocation = {50, 1175, 50, 1024, 656, 416};
     private int[] yLocation = {180, 180, 500, 400, 384, 544};
     private int health = 100;
-	
+	private boolean shootLeft = false;
 	//true for Right, false for left.
 	/**
 	 * Constructs a player object at loc(x,y).
@@ -83,8 +83,8 @@ public class Player
 		return name;
 	}
 	
-	public boolean facingLeft() {
-		return goLeft;
+	public boolean shootLeft() {
+		return (goLeft || shootLeft);
 	}
 	
 	public void respawn() {
