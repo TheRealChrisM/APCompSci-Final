@@ -27,14 +27,12 @@ public class GameMenu implements Screen{
 	public final int EXIT_HEIGHT = 100;
 	public final int HELP_WIDTH = 200;
 	public final int HELP_HEIGHT = 100;
-	public Gun gun1;
-	public Gun gun2;
+	public static Gun gun1;
+	public static Gun gun2;
 	
 	
 	public GameMenu(GameMain gameIn) {
 		game = gameIn;
-		Gun gun1;
-		Gun gun2;
 	}
 	
 	

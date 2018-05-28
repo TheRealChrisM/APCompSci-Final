@@ -2,6 +2,7 @@ package com.compsciproject.game;
 
 import java.util.ArrayList;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -38,12 +39,13 @@ public class GameScreen implements Screen{
     Texture bulletImg;
     BitmapFont font;
     private String winString;
-    private String p1PlayerName = "Andrew";
-    private String p2PlayerName = "Owen";
     private String p1Win;
     private String p2Win;
     int frameSinceWin = 0;
     boolean gameEnd = false;
+    public static Gun gun1;
+    public static Gun gun2;
+    
     
     public GameScreen (GameMain gameIn) {
     	game = gameIn;
@@ -52,6 +54,7 @@ public class GameScreen implements Screen{
     
     
 	public void show() {
+		Preferences prefs = Gdx.app.getPreferences("zappy_boys_setings");
 		p1Wins = 0;
 		p2Wins = 0;
 		for(int u = 0; u < bullets.size(); u++) {
@@ -68,16 +71,14 @@ public class GameScreen implements Screen{
 		batch = new SpriteBatch();
 		winChar = new SpriteBatch();
 		
-		Pistol gun1 = new Magnum();
-		Pistol gun2 = new Magnum();
 		bulletImg = new Texture("bullet.png");
 		Gdx.input.setInputProcessor(inputProcessor);
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false,w,h);
 	    camera.update();
-	    map = new TmxMapLoader().load("Factory.tmx");
-	    p1 = new Player(gun1, (TiledMapTileLayer)map.getLayers().get("Tile Layer 2"), p1PlayerName);
-		p2 = new Player(gun2, (TiledMapTileLayer)map.getLayers().get("Tile Layer 2"), p2PlayerName);
+	    map = new TmxMapLoader().load(prefs.getString("map"));
+	    p1 = new Player(gun1, (TiledMapTileLayer)map.getLayers().get("Tile Layer 2"), prefs.getString("player1Name"));
+		p2 = new Player(gun2, (TiledMapTileLayer)map.getLayers().get("Tile Layer 2"), prefs.getString("player2Name"));
 		p1Win = p1.getName() + " WINS!";
 		p2Win = p2.getName() + " WINS!";
 		
@@ -144,7 +145,8 @@ public class GameScreen implements Screen{
         tiledMapRenderer.render();
         batch.begin();
 		font.draw(batch,  winString, 1100, 50);
-		
+		System.out.println(gun1);
+		System.out.println(gun2);
 		batch.draw(walkFrames[p1.getFrame()], p1.getX(), p1.getY(), 50, 50);
 		batch.draw(walkFrames2[p2.getFrame()], p2.getX(), p2.getY(), 50, 50);
 		

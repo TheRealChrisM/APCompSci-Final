@@ -4,13 +4,15 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 public class SettingsScreen implements Screen{
 	Skin skin;
@@ -18,7 +20,9 @@ public class SettingsScreen implements Screen{
 	Label nameLabel;
 	Table table;
 	Stage stage;
-	
+	TextField playerOneText;
+	TextField playerTwoText;
+	Preferences prefs;
 	
 	public SettingsScreen(GameMain gameIn) {
 		game = gameIn;
@@ -26,18 +30,18 @@ public class SettingsScreen implements Screen{
 	
 	@Override
 	public void show() {
-		Preferences prefs = Gdx.app.getPreferences("zappy_boys_setings");
+		prefs = Gdx.app.getPreferences("zappy_boys_setings");
 		skin = new Skin(Gdx.files.internal("neon-ui.json"));
 		table = new Table();
 	    stage = new Stage();
 	    
 	    Label settingsLabel = new Label("SETTINGS:", skin);
 		Label playerOneLabel = new Label("Player 1:", skin);
-		TextField playerOneText = new TextField(prefs.getString("player1Name"), skin);
+		playerOneText = new TextField(prefs.getString("player1Name"), skin);
 		Label playerTwoLabel = new Label("Player 2:", skin);
-		TextField playerTwoText = new TextField(prefs.getString("player2Name"), skin);    
+		playerTwoText = new TextField(prefs.getString("player2Name"), skin);    
 		Label mapLabel = new Label("Map: ", skin);
-		
+		TextButton saveButton = new TextButton("SAVE", skin);
 		
 		Object[] blob = new Object[9]; 
 		blob[0] = new Magnum(); 
@@ -61,6 +65,19 @@ public class SettingsScreen implements Screen{
 		p2Wep.setItems(blob);
 		mapOpt.setItems(maps);
 		
+		saveButton.addListener(new ClickListener() {
+		    public void clicked(InputEvent event, float x, float y) {
+		        prefs.putString("player1Name", playerOneText.getText());
+		        prefs.putString("player2Name", playerTwoText.getText());
+		        prefs.putString("map", (String) mapOpt.getSelected());
+		        prefs.flush();
+		        
+		        GameScreen.gun1 = (Gun) p1Wep.getSelected();
+		        GameScreen.gun2 = (Gun) p2Wep.getSelected();
+		        game.setScreen(new GameMenu(game));
+		    }
+		});
+		
 		table.add(settingsLabel);
 		table.row();
 		table.add(playerOneLabel);
@@ -73,6 +90,8 @@ public class SettingsScreen implements Screen{
 		table.row();
 		table.add(mapLabel);
 		table.add(mapOpt);
+		table.row();
+		table.add(saveButton);
 		table.setFillParent(true);
 	    stage.addActor(table);
 	    Gdx.input.setInputProcessor(stage);
