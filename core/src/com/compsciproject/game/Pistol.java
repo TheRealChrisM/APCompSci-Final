@@ -10,11 +10,12 @@ public class Pistol implements Gun
 	private int dmg;
 	private int COOLDOWN = 0;
 	 
-	public Pistol(String name, int cool, int dmg)
+	public Pistol(String name, int cool, int dmg, int ammo)
 	{
 		this.name = name;;
 		COOLDOWN = cool;
 		this.dmg = dmg;
+		this.ammo = ammo;
 	}
 	
 	public int getDmg() {
