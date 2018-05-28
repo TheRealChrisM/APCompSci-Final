@@ -265,9 +265,10 @@ public class GameScreen implements Screen{
 				}
 				if(noBulletsRemoved && (p1.getX()<bullets.get(m).getXPos()) && ((p1.getX()+50)>bullets.get(m).getXPos()) && (p1.getY()<bullets.get(m).getYPos()) && ((p1.getY()+50)>bullets.get(m).getYPos())){
 					p2.setHealth(bullets.get(m).getDamage());
-					p2Wins++;
+				
 					if(p1.getHealth() <= 0) {
 						p1.respawn();
+						p2Wins++;
 					}
 					noBulletsRemoved = false;
 					bullets.remove(m);
@@ -275,9 +276,10 @@ public class GameScreen implements Screen{
 				}
 				if(noBulletsRemoved && (p2.getX()<bullets.get(m).getXPos()) && ((p2.getX()+50)>bullets.get(m).getXPos()) && (p2.getY()<bullets.get(m).getYPos()) && ((p2.getY()+50)>bullets.get(m).getYPos())){
 					p2.setHealth(bullets.get(m).getDamage());
-					p1Wins++;
+				
 					if(p2.getHealth() <= 0) {
 						p2.respawn();
+						p1Wins++;
 					}
 					
 					noBulletsRemoved = false;
