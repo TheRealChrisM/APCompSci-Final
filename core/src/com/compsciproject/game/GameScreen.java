@@ -308,6 +308,12 @@ public class GameScreen implements Screen{
 					bullets.remove(m);
 					m--;
 				}
+				else if (!bullets.get(m).checkRange())
+				{
+					noBulletsRemoved = false;
+					bullets.remove(m);
+					m--;
+				}
 				if(noBulletsRemoved && (p1.getX()<bullets.get(m).getXPos()) && ((p1.getX()+50)>bullets.get(m).getXPos()) && (p1.getY()<bullets.get(m).getYPos()) && ((p1.getY()+50)>bullets.get(m).getYPos())){
 					p1.setHealth(bullets.get(m).getDamage());
 				

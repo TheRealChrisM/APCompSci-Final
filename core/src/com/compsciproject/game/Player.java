@@ -97,7 +97,7 @@ public class Player
 	
 	public Bullet fire(boolean fireDirection) {
 		if(ableToShoot()) {
-			Bullet bulletOut = new Bullet(playerGun.getDmg(), x+1, y+10, 1, fireDirection, collisionLayer);
+			Bullet bulletOut = new Bullet(playerGun.getDmg(), playerGun.getRange(), x+1, y+10, 1, fireDirection, collisionLayer);
 			playerGun.setCooldown();
 			shootLeft = !(fireDirection);
 			return bulletOut;

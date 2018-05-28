@@ -14,7 +14,7 @@ public class Sniper implements Gun
 	
 	public Sniper()
 	{
-		range = 50;
+		range = 1280;
 		name = "L115A3";
 		dmg = 88;
 		ammo = 5;

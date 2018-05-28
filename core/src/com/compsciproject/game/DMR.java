@@ -13,7 +13,7 @@ public class DMR implements Gun
 	
 	public DMR()
 	{
-		range = 50;
+		range = 1280;
 		dmg = 47;
 		name = "SR-25";
 		ammo = 10;

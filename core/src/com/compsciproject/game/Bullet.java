@@ -5,7 +5,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 public class Bullet 
 {
 	private int damage;
-	private int start;
+	private int range;
 	private int xPos;
 	private int yPos;
 	private int length;
@@ -14,7 +14,7 @@ public class Bullet
 	private boolean direction;
 	private TiledMapTileLayer collisionLayer;
 	
-	public Bullet(int damage, int x, int y, int length, boolean facingRight, TiledMapTileLayer collisionLayerIn)
+	public Bullet(int damage, int range, int x, int y, int length, boolean facingRight, TiledMapTileLayer collisionLayerIn)
 	{
 		collisionLayer = collisionLayerIn;
 		this.damage = damage;
@@ -26,7 +26,14 @@ public class Bullet
 			xPos = x;
 			yPos = y;
 		}
-		start = xPos;
+		if (facingRight)
+		{
+			this.range = xPos - range; 
+		}
+		else
+		{
+			this.range = range + xPos;
+		}
 		this.length = length;
 		direction = facingRight;
 	}
@@ -49,11 +56,6 @@ public class Bullet
 		return damage;
 	}
 	
-	public int getStart()
-	{
-		return start;
-	}
-	
 	public void move() {
 		if(direction) {
 			xPos = xPos + speed;
@@ -61,7 +63,18 @@ public class Bullet
 		else {
 			xPos = xPos - speed;
 		}
+	}
 	
+	public boolean checkRange()
+	{
+		if (direction)
+		{
+			return xPos > range;
+		}
+		else
+		{
+			return xPos < range;
+		}
 	}
 	
 	public boolean checkCollision() {
