@@ -81,6 +81,10 @@ public class Player
 		return name;
 	}
 	
+	public boolean facingLeft() {
+		return goLeft;
+	}
+	
 	public void respawn() {
 		int num = (int) (Math.random() * xLocation.length);
 		x = xLocation[num];
