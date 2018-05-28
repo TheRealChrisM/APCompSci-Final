@@ -14,7 +14,7 @@ public class ShotGun implements Gun
 	
 	public ShotGun()
 	{
-		range = 80;
+		range = 224;
 		name = "Remington 870";
 		dmg = 93;
 		ammo = 8;

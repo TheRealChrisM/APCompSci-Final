@@ -8,12 +8,12 @@ public class DMR implements Gun
 	private int ammo;
 	private int coolDown = 0;
 	private int dmg;
-	private final int COOLDOWN = 100;
+	private final int COOLDOWN = 88;
 	private final Texture DMR = new Texture("SR-25.png");
 	
 	public DMR()
 	{
-		range = 1280;
+		range = 750;
 		dmg = 47;
 		name = "SR-25";
 		ammo = 10;
