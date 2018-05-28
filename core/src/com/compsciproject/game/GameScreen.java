@@ -314,7 +314,7 @@ public class GameScreen implements Screen{
 					bullets.remove(m);
 					m--;
 				}
-				if(noBulletsRemoved && (p1.getX()<bullets.get(m).getXPos()) && ((p1.getX()+50)>bullets.get(m).getXPos()) && (p1.getY()<bullets.get(m).getYPos()) && ((p1.getY()+50)>bullets.get(m).getYPos())){
+				if(noBulletsRemoved && (p1.getX()<bullets.get(m).getXPos()) && ((p1.getX()+25)>bullets.get(m).getXPos()) && (p1.getY()<bullets.get(m).getYPos()) && ((p1.getY()+25)>bullets.get(m).getYPos())){
 					p1.setHealth(bullets.get(m).getDamage());
 				
 					if(p1.getHealth() <= 0) {
@@ -325,7 +325,7 @@ public class GameScreen implements Screen{
 					bullets.remove(m);
 					m--;
 				}
-				if(noBulletsRemoved && (p2.getX()<bullets.get(m).getXPos()) && ((p2.getX()+50)>bullets.get(m).getXPos()) && (p2.getY()<bullets.get(m).getYPos()) && ((p2.getY()+50)>bullets.get(m).getYPos())){
+				if(noBulletsRemoved && (p2.getX()<bullets.get(m).getXPos()) && ((p2.getX()+25)>bullets.get(m).getXPos()) && (p2.getY()<bullets.get(m).getYPos()) && ((p2.getY()+25)>bullets.get(m).getYPos())){
 					p2.setHealth(bullets.get(m).getDamage());
 				
 					if(p2.getHealth() <= 0) {
